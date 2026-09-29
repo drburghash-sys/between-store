@@ -83,6 +83,7 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
  <section id="wifeLobby" class="screen">
   <div class="card"><div class="kicker">كود المتجر</div><div id="wifeCode" class="code">--------</div><div id="wifeOpp" class="muted" style="text-align:center">بانتظار دخول الزوج…</div></div>
   <div class="grid2"><button class="btn ghost" onclick="shareRoom()">مشاركة الكود</button><button class="btn ghost" onclick="endEvent()">إنهاء السهرة</button></div>
+  <button class="btn primary full" style="margin-top:10px" onclick="cancelAndNewEvent()">🔄 إلغاء السهرة وبدء سهرة جديدة</button>
   <button class="btn gold full" style="margin-top:10px" onclick="editStore()">✏️ تعديل المتجر</button>
   <button id="wifeDashboardBtn" class="btn primary full" style="margin-top:10px" onclick="show('wifeDash')">لوحة المتجر</button>
  </section>
@@ -105,7 +106,8 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
   <div class="balance"><div><div class="note">المتبقي لدى الزوج</div><strong id="wifeBalance">0 💎</strong></div><div><div class="note">موعد السهرة</div><b id="wifeDate">—</b></div></div>
   <div class="card"><div class="title">الطلبات</div><div id="wifePurchases"></div></div>
   <div class="card"><div class="title" style="font-size:18px">الإحصاءات</div><div class="stat"><div><b id="sCount">0</b><span class="note">مشتريات</span></div><div><b id="sSpent">0</b><span class="note">مصروف</span></div><div><b id="sUsed">0</b><span class="note">تم استخدامه</span></div></div></div>
-  <button class="btn gold full" onclick="editStore()">✏️ تعديل المتجر</button>
+  <button class="btn primary full" onclick="cancelAndNewEvent()">🔄 إلغاء السهرة وبدء سهرة جديدة</button>
+  <button class="btn gold full" style="margin-top:8px" onclick="editStore()">✏️ تعديل المتجر</button>
   <button class="btn ghost full" style="margin-top:8px" onclick="show('wifeLobby')">رجوع للكود</button>
  </section>
 </div>
@@ -276,8 +278,13 @@ function listenRoom(autoNavigate=true){
    wifeCode.textContent=room;wifeOpp.textContent=rd.guestUid?'الزوج متصل دائمًا ✓':'بانتظار دخول الزوج لأول مرة…';wifeBalance.textContent=(rd.balance??rd.budget)+' 💎';wifeDate.textContent=fmtDate(rd.eventAt);renderWifePurchases();
    if(autoNavigate&&!(editingExisting&&document.getElementById('wifeSetup').classList.contains('on'))&&!document.getElementById('wifeDash').classList.contains('on'))show('wifeLobby')
   }else{
-   if(rd.status==='open')renderShop();
-   if(autoNavigate&&rd.status==='open'&&!document.getElementById('home').classList.contains('on'))show('shop')
+   if(rd.status==='open'){
+    renderShop();
+    if(autoNavigate&&!document.getElementById('home').classList.contains('on'))show('shop')
+   }else{
+    cart=[];renderPairHome();
+    if(!document.getElementById('home').classList.contains('on'))show('home')
+   }
   }
  })
 }
@@ -300,6 +307,17 @@ function renderMyPurchases(){myPurchases.innerHTML='';let ps=Object.values(rd?.p
 function renderWifePurchases(){if(!rd)return;let entries=Object.entries(rd.purchases||{});wifePurchases.innerHTML='';if(!entries.length)wifePurchases.innerHTML='<div class="muted">لا توجد مشتريات حتى الآن.</div>';entries.forEach(([id,p])=>{let d=document.createElement('div');d.className='bought '+(p.used?'used':'');let privateText='';if(p.kind==='custom'){let n=Number(String(p.itemId).split('_')[1]);let x=customs[n];privateText=x?'<div class="note">خاص عندك: '+esc(x.name||x.desc||'')+'</div>':''}d.innerHTML='<div>'+((p.image)?'<img src="'+esc(p.image)+'" style="width:58px;height:58px;object-fit:cover;border-radius:12px;float:right;margin-left:9px">':'')+'<b>'+esc(p.groupName? p.groupName+' — '+p.name:p.name)+'</b><div class="note">'+catInfo(p.cat).icon+' '+catInfo(p.cat).name+' • '+p.price+' 💎</div>'+privateText+'</div><button class="btn '+(p.used?'ghost':'primary')+' small" onclick="toggleUsed(\''+id+'\','+(!p.used)+')">'+(p.used?'إرجاع':'تم استخدامه')+'</button>';wifePurchases.appendChild(d)});let spent=entries.reduce((a,[,p])=>a+Number(p.price||0),0),used=entries.filter(([,p])=>p.used).length;sCount.textContent=entries.length;sSpent.textContent=spent;sUsed.textContent=used}
 window.toggleUsed=async(id,v)=>update(ref(db,'rooms/'+room+'/purchases/'+id),{used:v});
 window.shareRoom=async()=>{if(!room)return;let url=location.origin+location.pathname,text='متجر بيننا\nكود المتجر: '+room+'\n'+url;try{if(navigator.share)await navigator.share({title:'متجر بيننا',text,url});else{await navigator.clipboard.writeText(text);toast('تم نسخ الكود والرابط')}}catch{}}
+window.cancelAndNewEvent=async()=>{
+ if(!room||!rd||role!=='wife')return;
+ if(!confirm('إلغاء السهرة الحالية؟ سيتم حذف مشترياتها الحالية، وسيبقى الربط الدائم بينكما كما هو.'))return;
+ try{
+  await update(ref(db,'rooms/'+room),{status:'idle',eventAt:'',budget:0,balance:0,items:null,purchases:null,publishedAt:Date.now()});
+  cart=[];editingExisting=false;
+  wifeStart();
+  eventAt.value='';budget.value=100;
+  toast('تم إلغاء السهرة. جهزي السهرة الجديدة ✓');
+ }catch(e){console.error(e);toast('تعذر بدء سهرة جديدة')}
+}
 window.endEvent=async()=>{
  if(!room||!rd||role!=='wife')return show('home');
  if(!confirm('إنهاء السهرة الحالية مع إبقاء الاتصال الدائم بينكما؟'))return;
