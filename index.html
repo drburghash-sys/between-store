@@ -144,6 +144,8 @@ let uid=null,room=null,rd=null,role=null,unsub=null,paired=false,cart=[],shopCat
 let draft=freshDraft();
 
 function freshDraft(){
+ const direct={};
+ [...DIRECTS.outing,...DIRECTS.romance,...DIRECTS.surprise].forEach(([id,,price])=>direct[id]={on:true,price});
  return {
   outfit:Object.fromEntries(OUTFIT_OPTIONS.map(x=>[x,{on:true,price:15}])),
   lingerie:[],
@@ -153,11 +155,10 @@ function freshDraft(){
   extraDinner:{name:'',price:20},
   dessert:{on:true,price:10},
   drink:{on:true,price:5},
-  direct:{},
+  direct,
   customSurprise:{name:'',price:20}
  }
 }
-[...DIRECTS.outing,...DIRECTS.romance,...DIRECTS.surprise].forEach(([id,,price])=>draft.direct[id]={on:true,price});
 
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('on'));$(id).classList.add('on');window.scrollTo({top:0,behavior:'instant'})} window.show=show;
