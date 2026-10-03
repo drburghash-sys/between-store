@@ -10,51 +10,37 @@
 <style>
 :root{--bg:#0d0710;--p:#21101e;--p2:#35162c;--line:#5b2d4a;--txt:#fff9fc;--mut:#cfbac6;--pink:#e54c82;--pink2:#ff91b6;--gold:#e6bb69;--ok:#69d6a2;--bad:#ff7487}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#58163c,#160a16 39%,#09060b 78%);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
-button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;padding:13px 12px 90px}
-.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:9px;padding:7px 0;background:linear-gradient(#0d0710f1,#0d07109c,transparent);backdrop-filter:blur(10px)}
-.brand{display:flex;gap:10px;align-items:center}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#f05c90,#7a1d55);display:grid;place-items:center;font-size:24px;box-shadow:0 12px 30px #0007}.brand b{font-size:21px}.brand small{display:block;color:var(--mut);margin-top:2px}
-.net{font-size:12px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--mut);background:#170c15}
-.screen{display:none}.screen.on{display:block;animation:screenIn .28s ease both}.card{background:linear-gradient(180deg,#35182d,#1b0e19);border:1px solid var(--line);border-radius:23px;padding:16px;margin:10px 0;box-shadow:0 18px 48px #0006,inset 0 1px 0 #ffffff0a}
-.kicker{font-size:12px;color:var(--pink2);font-weight:900}.title{font-size:23px;font-weight:1000;margin:4px 0 7px}.muted{color:var(--mut);line-height:1.7}.note{font-size:12px;color:#bda5b3;line-height:1.6}
-.btn{border:0;border-radius:15px;padding:13px 12px;background:#2a1524;color:white;font-weight:900;cursor:pointer;transition:.15s}.btn:active{transform:scale(.97)}.primary{background:linear-gradient(135deg,#ee4e83,#b51e5a);box-shadow:0 10px 26px #b51d593c}.ghost{border:1px solid var(--line);background:#1c1019}.gold{background:linear-gradient(135deg,#f4d18b,#a96a24);color:#241207}.danger{background:#501824}.full{width:100%}.small{padding:9px 10px;border-radius:12px;font-size:13px}.btn:disabled{opacity:.4;cursor:not-allowed}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.input,.select,.textarea{width:100%;background:#100910;color:white;border:1px solid var(--line);border-radius:14px;padding:12px}.textarea{min-height:76px;resize:vertical}
-.code{text-align:center;font-size:38px;letter-spacing:5px;font-weight:1000;background:linear-gradient(90deg,#fff,#ff9fbd,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;margin:12px 0}
-.balance{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border-radius:18px;background:linear-gradient(135deg,#3d2131,#20131e);border:1px solid #6b4058}.balance strong{font-size:27px;color:#f5d48c}
+button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;padding:13px 12px 100px}.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:9px;padding:7px 0;background:linear-gradient(#0d0710f2,#0d0710a8,transparent);backdrop-filter:blur(10px)}
+.brand{display:flex;gap:10px;align-items:center}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#f05c90,#7a1d55);display:grid;place-items:center;font-size:24px;box-shadow:0 12px 30px #0007}.brand b{font-size:21px}.brand small{display:block;color:var(--mut);margin-top:2px}.net{font-size:12px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--mut);background:#170c15}
+.screen{display:none}.screen.on{display:block;animation:screenIn .22s ease both}.card{background:linear-gradient(180deg,#35182d,#1b0e19);border:1px solid var(--line);border-radius:22px;padding:15px;margin:10px 0;box-shadow:0 18px 48px #0006,inset 0 1px 0 #ffffff0a}.kicker{font-size:12px;color:var(--pink2);font-weight:900}.title{font-size:22px;font-weight:1000;margin:4px 0 7px}.muted{color:var(--mut);line-height:1.7}.note{font-size:12px;color:#bda5b3;line-height:1.6}.section-title{display:flex;align-items:center;gap:10px;margin-bottom:10px}.section-title .emo{font-size:30px}.section-title h3{margin:0;font-size:19px}
+.btn{border:0;border-radius:15px;padding:13px 12px;background:#2a1524;color:white;font-weight:900;cursor:pointer;transition:.15s}.btn:active{transform:scale(.97)}.primary{background:linear-gradient(135deg,#ee4e83,#b51e5a);box-shadow:0 10px 26px #b51d593c}.ghost{border:1px solid var(--line);background:#1c1019}.gold{background:linear-gradient(135deg,#f4d18b,#a96a24);color:#241207}.danger{background:#501824}.ok{background:#174f3a}.full{width:100%}.small{padding:9px 10px;border-radius:12px;font-size:13px}.btn:disabled{opacity:.4;cursor:not-allowed}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.input,.select,.textarea{width:100%;background:#100910;color:white;border:1px solid var(--line);border-radius:14px;padding:12px}.textarea{min-height:76px;resize:vertical}
+.code{text-align:center;font-size:38px;letter-spacing:5px;font-weight:1000;background:linear-gradient(90deg,#fff,#ff9fbd,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;margin:12px 0}.balance{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border-radius:18px;background:linear-gradient(135deg,#3d2131,#20131e);border:1px solid #6b4058}.balance strong{font-size:27px;color:#f5d48c}.balance .break{font-size:12px;color:#d8c2ce;margin-top:2px}
+.simple-list{display:grid;gap:8px}.simple-row{display:grid;grid-template-columns:24px 1fr 92px;gap:8px;align-items:center;background:#160c15;border:1px solid #4e293d;border-radius:14px;padding:9px}.simple-row input[type=checkbox]{width:20px;height:20px}.pricebox{display:flex;align-items:center;gap:5px}.pricebox input{padding:8px;text-align:center}.choice-line{display:grid;grid-template-columns:1fr 90px;gap:8px;margin-top:8px}.perfume-line{display:grid;grid-template-columns:1fr 90px;gap:8px;margin-top:8px}.lingerie-row{display:grid;grid-template-columns:76px 1fr 86px 38px;gap:7px;align-items:center;margin-top:9px}.lingerie-thumb{width:76px;height:76px;border-radius:13px;object-fit:cover;background:#24121f;border:1px solid #5b3047}.upload{margin-top:6px;font-size:12px;color:#ccb7c3}.publishbar{position:sticky;bottom:10px;z-index:15;background:#160c15ed;border:1px solid var(--line);backdrop-filter:blur(10px);border-radius:18px;padding:10px;box-shadow:0 14px 35px #0008}
 .tabs{display:flex;gap:7px;overflow:auto;padding:4px 1px 9px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;border:1px solid var(--line);background:#21101d;color:white;border-radius:999px;padding:9px 12px;font-weight:900}.tab.sel{outline:2px solid #ff8db333;background:#42172f}
-.catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.item{background:linear-gradient(180deg,#2a1324,#170c16);border:1px solid #51263f;border-radius:20px;padding:13px;position:relative;overflow:hidden}.item.disabled{opacity:.5}.item .ico{font-size:30px}.item h3{margin:7px 0 4px;font-size:16px}.item .price{font-weight:1000;color:#f2cc7c}.item .meta{font-size:11px;color:#bda7b3;margin-top:4px}.switch{display:flex;align-items:center;gap:7px;margin-top:9px}.switch input{width:20px;height:20px}
-.editor{display:grid;grid-template-columns:1fr 94px 42px;gap:7px;align-items:center;margin-top:9px}.editor .input{padding:9px}.tag{display:inline-block;padding:5px 8px;border-radius:999px;background:#2b1523;border:1px solid #5d314a;font-size:11px;color:#dfc9d4}
-.cartbar{position:sticky;bottom:10px;z-index:8;background:#160c15e8;border:1px solid var(--line);backdrop-filter:blur(10px);border-radius:18px;padding:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 14px 35px #0008}
-.receipt{background:#fff7ee;color:#2a2020;border-radius:18px;padding:16px}.receipt h3{text-align:center;margin:0 0 12px}.rline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed #c7b7aa}.rline:last-child{border-bottom:0}.bought{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:center;padding:11px 0;border-bottom:1px solid #422338}.bought:last-child{border-bottom:0}.used{opacity:.55;text-decoration:line-through}
+.catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.item{background:linear-gradient(180deg,#2a1324,#170c16);border:1px solid #51263f;border-radius:20px;padding:13px;position:relative;overflow:hidden}.item.disabled{opacity:.5}.item .ico{font-size:30px}.item h3{margin:7px 0 4px;font-size:16px}.item .price{font-weight:1000;color:#f2cc7c}.item .meta{font-size:11px;color:#bda7b3;margin-top:4px}.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.option-card{border:1px solid #573047;background:#160c15;border-radius:16px;padding:9px}.option-card img{width:100%;aspect-ratio:1.15;object-fit:cover;border-radius:12px;margin-bottom:7px;background:#25131f;cursor:zoom-in}.option-card b{display:block;line-height:1.4}.group-title{padding-bottom:9px;border-bottom:1px solid #4b263b}.group-title h3{margin:0 0 3px}
+.cartbar{position:sticky;bottom:10px;z-index:12;background:#160c15ed;border:1px solid var(--line);backdrop-filter:blur(10px);border-radius:18px;padding:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 14px 35px #0008}.bought{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:center;padding:11px 0;border-bottom:1px solid #422338}.bought:last-child{border-bottom:0}.used{opacity:.55;text-decoration:line-through}.tag{display:inline-block;padding:5px 8px;border-radius:999px;background:#2b1523;border:1px solid #5d314a;font-size:11px;color:#dfc9d4}
+.task{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:center;padding:11px;border:1px solid #4a273a;border-radius:15px;background:#160c15;margin-top:8px}.task.done{opacity:.58}.reward{font-weight:1000;color:#f2cc7c}.task-preset{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px;border:1px solid #4a273a;border-radius:14px;background:#160c15;margin-top:8px}.task-preset b{font-size:14px}
 .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat>div{text-align:center;background:#1b0e18;border:1px solid #4b283c;border-radius:16px;padding:10px}.stat b{display:block;font-size:22px;color:#f1cb7d}
-.overlay{position:fixed;inset:0;background:#070408ea;display:none;place-items:center;padding:20px;z-index:40}.overlay.on{display:grid}.modal{width:min(100%,500px);background:linear-gradient(#3a172f,#180c17);border:1px solid #733456;border-radius:25px;padding:22px;text-align:center}.modal .big{font-size:58px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:white;color:#241018;padding:10px 14px;border-radius:12px;font-weight:900;opacity:0;transition:.2s;z-index:60}.toast.on{opacity:1}
+.overlay{position:fixed;inset:0;background:#070408ea;display:none;place-items:center;padding:20px;z-index:40}.overlay.on{display:grid}.modal{width:min(100%,500px);background:linear-gradient(#3a172f,#180c17);border:1px solid #733456;border-radius:25px;padding:22px;text-align:center}.modal .big{font-size:58px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:white;color:#241018;padding:10px 14px;border-radius:12px;font-weight:900;opacity:0;transition:.2s;z-index:90}.toast.on{opacity:1}
+.image-lightbox{position:fixed;inset:0;z-index:80;background:#050306f2;display:none;align-items:center;justify-content:center;padding:18px}.image-lightbox.on{display:flex}.image-lightbox-card{width:min(96vw,720px);max-height:94vh;display:flex;flex-direction:column;gap:10px}.image-lightbox-card img{width:100%;max-height:78vh;object-fit:contain;border-radius:18px;background:#120a11;box-shadow:0 24px 80px #000}.image-lightbox-title{text-align:center;font-weight:900;font-size:18px}
 @keyframes screenIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media(max-width:650px){.catalog{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.editor{grid-template-columns:1fr 88px 40px}}
-
-.choice-editor{margin-top:10px;padding:10px;border-radius:16px;background:#120a11;border:1px dashed #63334f}
-.choice-row{display:grid;grid-template-columns:58px 1fr 86px 40px;gap:7px;align-items:center;margin-top:8px}
-.choice-thumb{width:58px;height:58px;border-radius:13px;object-fit:cover;background:#24121f;border:1px solid #5b3047}
-.choice-upload{margin-top:6px;font-size:12px;color:#ccb7c3}.choice-upload input{max-width:100%}
-.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
-.option-card{border:1px solid #573047;background:#160c15;border-radius:16px;padding:9px}
-.option-card img{width:100%;aspect-ratio:1.2;object-fit:cover;border-radius:12px;margin-bottom:7px;background:#25131f}
-.option-card b{display:block;line-height:1.4}.option-card .price{margin-top:5px}
-.group-title{padding-bottom:9px;border-bottom:1px solid #4b263b}.group-title h3{margin:0 0 3px}
-
-.zoomable{cursor:zoom-in}.image-lightbox{position:fixed;inset:0;z-index:80;background:#050306f2;display:none;align-items:center;justify-content:center;padding:18px}.image-lightbox.on{display:flex}.image-lightbox-card{width:min(96vw,720px);max-height:94vh;display:flex;flex-direction:column;gap:10px}.image-lightbox-card img{width:100%;max-height:78vh;object-fit:contain;border-radius:18px;background:#120a11;box-shadow:0 24px 80px #000}.image-lightbox-title{text-align:center;font-weight:900;font-size:18px}.image-lightbox-close{width:100%}
+@media(max-width:650px){.catalog{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.lingerie-row{grid-template-columns:62px 1fr 76px 36px}.lingerie-thumb{width:62px;height:62px}}
 </style>
 </head>
 <body>
 <div class="app">
  <div class="top">
-  <div class="brand"><div class="logo">💎</div><div><b>متجر بيننا</b><small>الزوجة تجهّز • الزوج يختار</small></div></div>
+  <div class="brand"><div class="logo">💎</div><div><b>متجر بيننا</b><small>رصيد ثابت + رصيد الشوق</small></div></div>
   <div id="net" class="net">اتصال…</div>
  </div>
 
  <section id="home" class="screen on">
-  <div class="card"><div class="kicker">متجر خاص قبل الموعد</div><div class="title">اختروا السهرة قبل أن تبدأ</div><div class="muted">الزوجة تجهّز الكتالوج والأسعار وموعد السهرة، والزوج يدخل المتجر ويشتري ضمن ميزانيته قبل الموعد.</div></div>
+  <div class="card"><div class="kicker">طوال الأسبوع</div><div class="title">اكسب رصيد الشوق… ثم استخدمه في سهرتكم</div><div class="muted">الزوجة ترسل مهامًا صغيرة خلال الأسبوع، وعند تنفيذها يضاف الرصيد إلى رصيد الزوج. يوم السهرة يضاف هذا الرصيد إلى الرصيد الأساسي للمتجر.</div></div>
   <div id="pairCard" class="card" style="display:none">
    <div class="kicker">اتصال دائم</div><div class="title" id="pairTitle">متصل ✓</div>
-   <div class="muted" id="pairText">تم حفظ الربط بين الجهازين.</div>
-   <button id="pairMainBtn" class="btn primary full" onclick="pairMainAction()">متابعة</button>
+   <div class="muted" id="pairText"></div>
+   <div class="balance" style="margin-top:10px"><div><div class="note">رصيد الشوق</div><strong id="homeLonging">0 💎</strong></div><button id="longingBtn" class="btn gold" onclick="openLonging()">رصيد الشوق</button></div>
+   <button id="pairMainBtn" class="btn primary full" style="margin-top:10px" onclick="pairMainAction()">متابعة</button>
    <button class="btn ghost full" style="margin-top:8px" onclick="disconnectPair()">فصل الربط بين الجهازين</button>
   </div>
   <div id="firstPairActions" class="grid2">
@@ -65,28 +51,21 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
 
  <section id="wifeSetup" class="screen">
   <div class="card">
-   <div class="kicker">الخطوة 1</div><div class="title">موعد السهرة والميزانية</div>
+   <div class="kicker">الخطوة 1</div><div class="title">موعد السهرة والرصيد الأساسي</div>
    <label class="note">موعد السهرة</label><input id="eventAt" class="input" type="datetime-local">
-   <label class="note" style="display:block;margin-top:9px">ميزانية الزوج 💎</label><input id="budget" class="input" type="number" min="10" step="5" value="100">
+   <label class="note" style="display:block;margin-top:9px">الرصيد الأساسي للمتجر 💎</label><input id="budget" class="input" type="number" min="10" step="5" value="100">
+   <div class="note" style="margin-top:7px">رصيد الشوق لا تكتبينه هنا؛ يضاف تلقائيًا إلى رصيد الزوج.</div>
   </div>
-  <div class="card">
-   <div class="kicker">الخطوة 2</div><div class="title">اختاري ما سيظهر في المتجر</div>
-   <div id="wifeTabs" class="tabs"></div><div id="wifeCatalog" class="catalog"></div>
-  </div>
-  <div class="card">
-   <div class="title" style="font-size:18px">الخيارات الخاصة 🔐</div>
-   <div class="muted">اسم الخيار الخاص ووصفه يبقيان على هذا الجهاز. الزوج سيرى فقط «خيار خاص» وسعره حتى يتم التعامل معه بينكما.</div>
-   <div id="customEditor"></div><button class="btn ghost full" onclick="addCustom()">+ إضافة خيار خاص</button>
-  </div>
-  <div class="card" style="padding:12px;position:sticky;bottom:10px;z-index:12"><div class="note" style="text-align:center;margin-bottom:7px">بعد الانتهاء من الصور والخيارات اضغطي هنا لنشرها للزوج.</div><button id="storeSaveBtn" class="btn primary full" onclick="createStore()">✅ تم — نشر المتجر للزوج</button></div>
+  <div id="simpleEditor"></div>
+  <div class="publishbar"><div class="note" style="text-align:center;margin-bottom:7px">بعد الانتهاء اضغطي «تم» لينتقل المتجر للزوج.</div><button id="storeSaveBtn" class="btn primary full" onclick="createStore()">✅ تم — نشر المتجر للزوج</button></div>
  </section>
 
  <section id="wifeLobby" class="screen">
-  <div class="card"><div class="kicker">كود المتجر</div><div id="wifeCode" class="code">--------</div><div id="wifeOpp" class="muted" style="text-align:center">بانتظار دخول الزوج…</div></div>
-  <div class="grid2"><button class="btn ghost" onclick="shareRoom()">مشاركة الكود</button><button class="btn ghost" onclick="endEvent()">إنهاء السهرة</button></div>
+  <div class="card"><div class="kicker">الاتصال الدائم</div><div id="wifeCode" class="code">--------</div><div id="wifeOpp" class="muted" style="text-align:center"></div></div>
+  <div class="grid2"><button class="btn gold" onclick="openLonging()">💞 رصيد الشوق</button><button class="btn ghost" onclick="shareRoom()">مشاركة الكود</button></div>
   <button class="btn primary full" style="margin-top:10px" onclick="cancelAndNewEvent()">🔄 إلغاء السهرة وبدء سهرة جديدة</button>
-  <button class="btn gold full" style="margin-top:10px" onclick="editStore()">✏️ تعديل المتجر</button>
-  <button id="wifeDashboardBtn" class="btn primary full" style="margin-top:10px" onclick="show('wifeDash')">لوحة المتجر</button>
+  <button class="btn gold full" style="margin-top:8px" onclick="editStore()">✏️ تعديل المتجر</button>
+  <button class="btn ghost full" style="margin-top:8px" onclick="show('wifeDash')">لوحة المشتريات</button>
  </section>
 
  <section id="husbandJoin" class="screen">
@@ -94,26 +73,40 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
   <button class="btn ghost full" onclick="show('home')">رجوع</button>
  </section>
 
+ <section id="longingWife" class="screen">
+  <div class="balance"><div><div class="note">رصيد الزوج الحالي</div><strong id="wifeLongingBalance">0 💎</strong></div><button class="btn ghost small" onclick="show('home')">الرئيسية</button></div>
+  <div class="card"><div class="kicker">خلال الأسبوع</div><div class="title">أرسلي مهمة لزوجك</div><div class="muted">اختاري مهمة جاهزة أو اكتبي مهمة من عندك. لكل مهمة مكافأة محددة.</div><div id="taskPresets"></div></div>
+  <div class="card"><div class="title" style="font-size:18px">مهمة من عندك</div><input id="customTaskText" class="input" placeholder="اكتبي المهمة"><div class="choice-line"><input id="customTaskReward" class="input" type="number" min="1" step="5" value="10"><button class="btn primary" onclick="sendCustomTask()">إرسال +</button></div></div>
+  <div class="card"><div class="title" style="font-size:18px">المهام المرسلة</div><div id="wifeTasks"></div></div>
+ </section>
+
+ <section id="longingHusband" class="screen">
+  <div class="balance"><div><div class="note">رصيد الشوق</div><strong id="husbandLongingBalance">0 💎</strong></div><button class="btn ghost small" onclick="show('home')">الرئيسية</button></div>
+  <div class="card"><div class="title">مهام هذا الأسبوع 💞</div><div class="muted">عندما تنفذ مهمة اضغط «تم التنفيذ» ويضاف رصيدها مباشرة.</div><div id="husbandTasks"></div></div>
+ </section>
+
  <section id="shop" class="screen">
-  <div class="balance"><div><div class="note">رصيدك</div><strong id="balanceText">0 💎</strong></div><div style="text-align:left"><div class="note">موعد السهرة</div><b id="shopDate">—</b></div></div>
+  <div class="balance"><div><div class="note">رصيد المتجر المتاح</div><strong id="balanceText">0 💎</strong><div id="balanceBreakdown" class="break"></div></div><div style="text-align:left"><div class="note">موعد السهرة</div><b id="shopDate">—</b></div></div>
   <div class="card" style="padding:10px"><div class="row" style="justify-content:space-between"><div><b>المتجر الحالي</b><div id="refreshStamp" class="note">آخر تحديث: —</div></div><button class="btn ghost small" onclick="refreshStore()">🔄 تحديث المتجر</button></div></div>
-  <div id="nightNotice" class="card" style="display:none;text-align:center"><div style="font-size:46px">🌙</div><div class="title">بدأ موعد السهرة</div><div class="muted">أُغلق المتجر تلقائيًا. الآن تظهر مشترياتك التي اخترتها مسبقًا.</div></div>
+  <div id="nightNotice" class="card" style="display:none;text-align:center"><div style="font-size:46px">🌙</div><div class="title">بدأ موعد السهرة</div><div class="muted">أُغلق المتجر تلقائيًا، وتظهر مشترياتك بالأسفل.</div></div>
   <div id="shopCard" class="card"><div id="shopTabs" class="tabs"></div><div id="shopCatalog" class="catalog"></div></div>
   <div id="cartBar" class="cartbar"><div><b id="cartCount">0 عناصر</b><div class="note" id="cartTotal">المجموع 0 💎</div></div><button class="btn gold" onclick="checkout()">✅ تم الشراء</button></div>
   <div class="card"><div class="title" style="font-size:18px">مشترياتي</div><div id="myPurchases"></div></div>
+  <button class="btn ghost full" onclick="show('home')">الرئيسية</button>
  </section>
 
  <section id="wifeDash" class="screen">
-  <div class="balance"><div><div class="note">المتبقي لدى الزوج</div><strong id="wifeBalance">0 💎</strong></div><div><div class="note">موعد السهرة</div><b id="wifeDate">—</b></div></div>
+  <div class="balance"><div><div class="note">المتاح للزوج</div><strong id="wifeBalance">0 💎</strong><div id="wifeBalanceBreakdown" class="break"></div></div><div><div class="note">موعد السهرة</div><b id="wifeDate">—</b></div></div>
   <div class="card"><div class="title">الطلبات</div><div id="wifePurchases"></div></div>
   <div class="card"><div class="title" style="font-size:18px">الإحصاءات</div><div class="stat"><div><b id="sCount">0</b><span class="note">مشتريات</span></div><div><b id="sSpent">0</b><span class="note">مصروف</span></div><div><b id="sUsed">0</b><span class="note">تم استخدامه</span></div></div></div>
   <button class="btn primary full" onclick="cancelAndNewEvent()">🔄 إلغاء السهرة وبدء سهرة جديدة</button>
   <button class="btn gold full" style="margin-top:8px" onclick="editStore()">✏️ تعديل المتجر</button>
-  <button class="btn ghost full" style="margin-top:8px" onclick="show('wifeLobby')">رجوع للكود</button>
+  <button class="btn ghost full" style="margin-top:8px" onclick="show('wifeLobby')">رجوع</button>
  </section>
 </div>
+
 <div id="overlay" class="overlay"><div id="modal" class="modal"></div></div>
-<div id="imageLightbox" class="image-lightbox" onclick="if(event.target===this)closeImage()"><div class="image-lightbox-card"><img id="imageLightboxImg" alt=""><div id="imageLightboxTitle" class="image-lightbox-title"></div><button class="btn primary image-lightbox-close" onclick="closeImage()">إغلاق الصورة</button></div></div>
+<div id="imageLightbox" class="image-lightbox" onclick="if(event.target===this)closeImage()"><div class="image-lightbox-card"><img id="imageLightboxImg" alt=""><div id="imageLightboxTitle" class="image-lightbox-title"></div><button class="btn primary full" onclick="closeImage()">إغلاق الصورة</button></div></div>
 <div id="toast" class="toast"></div>
 
 <script type="module">
@@ -123,216 +116,317 @@ import {getDatabase,ref,set,get,update,onValue,push,remove} from "https://www.gs
 
 const cfg={apiKey:"AIzaSyBd36jTJ1Z-SrhyXk_jXOcVBjPvVFGfpek",authDomain:"couple-battleship.firebaseapp.com",databaseURL:"https://couple-battleship-default-rtdb.firebaseio.com",projectId:"couple-battleship",storageBucket:"couple-battleship.firebasestorage.app",messagingSenderId:"1030235226722",appId:"1:1030235226722:web:111d78d035944a17a3873b"};
 const app=initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
+const $=id=>document.getElementById(id);
 
 const CATS=[
- {id:'look',icon:'👗',name:'الإطلالة والملابس',items:['اختيار لون الإطلالة','اختيار ستايل الإطلالة','اختيار الفستان أو الطقم','اختيار الحذاء','اختيار الإكسسوار','اختيار العطر','اختيار تسريحة الشعر','اختيار لون أحمر الشفاه أو المكياج','اختيار قطعة إضافية للمظهر','مفاجأة في الإطلالة تختارها الزوجة']},
- {id:'dine',icon:'☕',name:'القهوة والعشاء',items:['اختيار مكان القهوة','اختيار نوع القهوة','اختيار مكان العشاء','اختيار نوع المطعم','اختيار الطبق الرئيسي','اختيار الحلو','اختيار المشروب','تغيير المطعم بعد الحجز','إضافة محطة قهوة ثانية','اختيار مكان الجلوس داخل المطعم']},
- {id:'outing',icon:'🚗',name:'المشوار والسهرة خارج المنزل',items:['اختيار الموسيقى في السيارة','اختيار مسار المشوار','اختيار مكان للمشي','اختيار مكان هادئ للجلوس','اختيار توقف إضافي','اختيار مكان الحلو','اختيار وقت العودة','جولة سيارة بدون وجهة محددة','اختيار نشاط قصير خلال السهرة']},
- {id:'romance',icon:'❤️',name:'الرومانسية الهادئة',items:['عناق طويل','قبلة رومانسية','رقصة بطيئة','تدليك للكتفين','تدليك لليدين','الجلوس قريبًا معًا','اختيار أغنية خاصة','قول شيء','جلسة حديث','اختيار الإضاءة','اختيار الرائحة أو الشموع','مشاهدة شيء قصير معًا']},
- {id:'mood',icon:'🌙',name:'التحكم في أجواء السهرة',items:['الزوج يختار الأغنية التالية','الزوج يختار الإضاءة','الزوج يختار المشروب','الزوج يختار مكان الجلوس','الزوجة تختار ترتيب النشاطين القادمين','تمديد السهرة 15 دقيقة','تمديد السهرة 30 دقيقة','استبدال نشاط بنشاط آخر','إعادة شراء عنصر سبق استخدامه','فتح عنصر سري من المتجر']},
- {id:'surprise',icon:'🎁',name:'مفاجآت الزوجة',items:['رسالة مكتوبة','حلو مفضل','اختيار عطر خاص بالسهرة','اختيار أغنية لم يسمعها الزوج مسبقًا','صندوق مفاجأة','بطاقة «اطلب أمنية رومانسية»','بطاقة «أنا أختار لك»']},
- {id:'private',icon:'🔐',name:'الجزء الخاص من السهرة',items:['تدليك','رقصة خاصة للزوجين','عناق','قبلة','اختيار موسيقى هادئة','اختيار الإضاءة','اختيار العطر','اختيار مدة جلسة خاصة','بطاقة مفاجأة','بطاقة «اختيار الزوج»','بطاقة «اختيار الزوجة»']},
- {id:'power',icon:'👑',name:'بطاقات القوة',items:['خصم 25% على عنصر','شراء عنصر بنصف السعر','عنصر مجاني','مضاعفة مدة عنصر','إعادة استخدام عنصر مرة واحدة','استبدال عنصر بعد الشراء','فتح عنصر مخفي','الاحتفاظ بالمبلغ وعدم خصمه','اختيار عنصر من خارج المتجر','بطاقة VIP تفتح قسمًا خاصًا']},
- {id:'finale',icon:'💎',name:'النهاية',items:['اختيار ختام السهرة','مفاجأة من الزوجة','صندوق ذهبي','طلب واحد من العناصر المتبقية','إعادة عنصر مفضل','جائزة كبرى خاصة تكتب الزوجة محتواها بنفسها']}
+ {id:'look',icon:'👗',name:'الإطلالة والملابس'},
+ {id:'perfume',icon:'🌹',name:'العطر'},
+ {id:'dine',icon:'☕',name:'القهوة والعشاء'},
+ {id:'outing',icon:'🚗',name:'المشوار والخروج'},
+ {id:'romance',icon:'❤️',name:'الرومانسية الهادئة'},
+ {id:'surprise',icon:'🎁',name:'مفاجآت الزوجة'}
 ];
-const defaults={look:20,dine:15,outing:15,romance:15,mood:20,surprise:25,private:25,power:30,finale:40};
-let uid=null,room=null,rd=null,role=null,roomUnsub=null,setupCat='look',shopCat='all',selected={},customs=[],cart=[],editingExisting=false,paired=false;
-function isChoiceDefault(name){return name.startsWith('اختيار')||name.startsWith('الزوج يختار')||name.startsWith('الزوجة تختار')}
-CATS.forEach(c=>c.items.forEach((name,i)=>selected[c.id+'_'+i]={enabled:false,price:defaults[c.id],name,cat:c.id,idx:i,choiceMode:isChoiceDefault(name),options:[]}));
+const TASK_PRESETS=[
+ ['💬 رسالة لطيفة خلال اليوم',5],['📞 اتصال قصير للاطمئنان',5],['☕ أحضر لي قهوة أحبها',10],
+ ['🤝 ساعدني في شيء أختاره',10],['📵 20 دقيقة حديث بدون جوال',15],['💗 مجاملة صادقة ومحددة',5],
+ ['🏠 أنجز عني مهمة منزلية صغيرة',10],['🎁 مفاجأة بسيطة من اختيارك',15],['🎵 اختر أغنية وأرسلها لي',5],
+ ['🚶 وقت قصير نمشي أو نجلس فيه معًا',15],['🤗 عناق طويل',10],['🌹 لفتة رومانسية بسيطة',10]
+];
+const OUTFIT_OPTIONS=['إطلالة خطبة','إطلالة دوام','إطلالة سهرة','إطلالة معارف','إطلالة كاجوال','مفاجأة تختارها الزوجة'];
+const DINNER_OPTIONS=['قهوة','مشاوي','طواجن','برجر','ستيك','إيطالي','هندي'];
+const DIRECTS={
+ outing:[['outing_music','اختيار الموسيقى في السيارة',10],['outing_walk','اختيار مكان للمشي',15],['outing_quiet','مكان هادئ للجلوس',15],['outing_stop','توقف إضافي أثناء المشوار',10]],
+ romance:[['romance_kiss','قبلة رومانسية',15],['romance_shoulder','تدليك للكتفين',20],['romance_song','اختيار أغنية خاصة',10],['romance_light','اختيار الإضاءة',10]],
+ surprise:[['surprise_letter','رسالة مكتوبة',10],['surprise_sweet','حلو مفضل',15],['surprise_song','أغنية لم يسمعها الزوج مسبقًا',10]]
+};
 
-function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on')} window.show=show;
-function toast(t){let e=toastEl();e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1700)}function toastEl(){return document.getElementById('toast')}
-window.openImageById=id=>{let it=rd?.items?.[id];if(!it?.image)return;imageLightboxImg.src=it.image;imageLightboxTitle.textContent=it.groupName?it.groupName+' — '+it.name:it.name;imageLightbox.classList.add('on')}
-window.openPurchaseImage=(src,title='')=>{if(!src)return;imageLightboxImg.src=src;imageLightboxTitle.textContent=title;imageLightbox.classList.add('on')}
-window.closeImage=()=>{imageLightbox.classList.remove('on');imageLightboxImg.src=''}
+let uid=null,room=null,rd=null,role=null,unsub=null,paired=false,cart=[],shopCat='all',editingExisting=false;
+let draft=freshDraft();
+
+function freshDraft(){
+ return {
+  outfit:Object.fromEntries(OUTFIT_OPTIONS.map(x=>[x,{on:true,price:15}])),
+  lingerie:[],
+  makeup:[{name:'',price:10},{name:'',price:10},{name:'',price:10}],
+  perfumes:[{name:'',price:15},{name:'',price:15},{name:'',price:15}],
+  dinner:Object.fromEntries(DINNER_OPTIONS.map(x=>[x,{on:true,price:x==='قهوة'?10:20}])),
+  extraDinner:{name:'',price:20},
+  dessert:{on:true,price:10},
+  drink:{on:true,price:5},
+  direct:{},
+  customSurprise:{name:'',price:20}
+ }
+}
+[...DIRECTS.outing,...DIRECTS.romance,...DIRECTS.surprise].forEach(([id,,price])=>draft.direct[id]={on:true,price});
 
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('on'));$(id).classList.add('on');window.scrollTo({top:0,behavior:'instant'})} window.show=show;
+function toast(t){$('toast').textContent=t;$('toast').classList.add('on');setTimeout(()=>$('toast').classList.remove('on'),1700)}
 function fmtDate(v){if(!v)return 'غير محدد';try{return new Intl.DateTimeFormat('ar-SA',{dateStyle:'medium',timeStyle:'short'}).format(new Date(v))}catch{return v}}
-onValue(ref(db,'.info/connected'),s=>net.textContent=s.val()===true?'متصل ✓':'غير متصل');
+function code8(){let a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',s='M';for(let i=0;i<7;i++)s+=a[Math.floor(Math.random()*a.length)];return s}
+function totalBalance(x=rd){return Number(x?.baseBalance??x?.balance??x?.budget??0)+Number(x?.longingBalance||0)}
+function baseBalance(x=rd){return Number(x?.baseBalance??x?.balance??x?.budget??0)}
+function longingBalance(x=rd){return Number(x?.longingBalance||0)}
+function saleClosed(){return !!rd?.eventAt&&Date.now()>=new Date(rd.eventAt).getTime()}
+function catInfo(id){return CATS.find(c=>c.id===id)||{icon:'💎',name:id}}
+function purchasedIds(){return new Set(Object.values(rd?.purchases||{}).map(p=>p.itemId))}
+function purchasedGroups(){return new Set(Object.values(rd?.purchases||{}).map(p=>p.groupId).filter(Boolean))}
+
+onValue(ref(db,'.info/connected'),s=>$('net').textContent=s.val()===true?'متصل ✓':'غير متصل');
 onAuthStateChanged(auth,u=>{if(u){uid=u.uid;resume()}});
-signInAnonymously(auth).catch(()=>net.textContent='خطأ اتصال');
+signInAnonymously(auth).catch(()=>$('net').textContent='خطأ اتصال');
 async function ensure(){if(uid)return uid;let x=await signInAnonymously(auth);uid=x.user.uid;return uid}
-function remember(){if(room){localStorage.setItem('between_store_active',JSON.stringify({room,role}));localStorage.setItem('between_store_pair',JSON.stringify({room,role}));paired=true;renderPairHome()}}
-function forgetActive(){localStorage.removeItem('between_store_active')}
-function forgetPair(){localStorage.removeItem('between_store_active');localStorage.removeItem('between_store_pair');paired=false}
+function remember(){if(room){localStorage.setItem('between_store_pair',JSON.stringify({room,role}));localStorage.setItem('between_store_active',JSON.stringify({room,role}));paired=true}}
+function forgetPair(){localStorage.removeItem('between_store_pair');localStorage.removeItem('between_store_active');paired=false}
 function readPair(){try{return JSON.parse(localStorage.getItem('between_store_pair')||localStorage.getItem('between_store_active')||'null')}catch{return null}}
+function loadDraft(){try{let x=JSON.parse(localStorage.getItem('between_store_simple_draft_v1')||'null');if(x)draft={...freshDraft(),...x,direct:{...freshDraft().direct,...(x.direct||{})}}}catch{}}
+function saveDraft(){try{localStorage.setItem('between_store_simple_draft_v1',JSON.stringify(draft))}catch(e){console.warn(e)}}
+
 async function resume(){
  try{
   let a=readPair();if(!a||room)return;
-  let s=await get(ref(db,'rooms/'+a.room));
-  if(!s.exists()||s.val().game!=='between-store'){forgetPair();renderPairHome();return}
-  let x=s.val();if(x.hostUid!==uid&&x.guestUid!==uid){forgetPair();renderPairHome();return}
-  room=a.room;role=x.hostUid===uid?'wife':'husband';rd=x;paired=true;remember();listenRoom(false);renderPairHome();show('home')
+  let s=await get(ref(db,'rooms/'+a.room));if(!s.exists()||s.val().game!=='between-store'){forgetPair();renderHome();return}
+  let x=s.val();if(x.hostUid!==uid&&x.guestUid!==uid){forgetPair();renderHome();return}
+  room=a.room;role=x.hostUid===uid?'wife':'husband';rd=x;paired=true;remember();listenRoom();renderHome();show('home')
  }catch(e){console.warn(e)}
 }
-function renderPairHome(){
- let a=readPair();paired=!!(a&&room&&rd);
- pairCard.style.display=paired?'block':'none';firstPairActions.style.display=paired?'none':'grid';
- if(!paired)return;
- let open=rd?.status==='open';
- pairTitle.textContent=role==='wife'?'متصلة بالزوج ✓':'متصل بالزوجة ✓';
+
+function listenRoom(){
+ if(unsub)unsub();
+ unsub=onValue(ref(db,'rooms/'+room),s=>{
+  if(!s.exists()){forgetPair();room=null;rd=null;role=null;renderHome();show('home');toast('تم إنهاء الاتصال');return}
+  rd=s.val();paired=true;remember();renderHome();renderRoleViews();
+ })
+}
+function renderRoleViews(){
  if(role==='wife'){
-   pairText.textContent=open?'المتجر الحالي مفتوح ومتزامن مع جهاز الزوج.':'الربط محفوظ. جهزي سهرة جديدة بدون إنشاء كود جديد.';
-   pairMainBtn.textContent=open?'فتح لوحة المتجر':'تجهيز سهرة جديدة';
- }else{
-   pairText.textContent=open?'متجر الزوجة جاهز ويمكنك الدخول مباشرة.':'الربط محفوظ. لا تحتاج إلى إدخال أي كود مرة أخرى.';
-   pairMainBtn.textContent=open?'دخول المتجر':'بانتظار تجهيز الزوجة';
-   pairMainBtn.disabled=!open;
+  $('wifeCode').textContent=room||'--------';
+  $('wifeOpp').textContent=rd?.guestUid?'الزوج مرتبط معك دائمًا ✓':'بانتظار دخول الزوج لأول مرة…';
+  $('wifeLongingBalance').textContent=longingBalance()+' 💎';
+  $('wifeBalance').textContent=totalBalance()+' 💎';
+  $('wifeBalanceBreakdown').textContent='أساسي '+baseBalance()+' + شوق '+longingBalance();
+  $('wifeDate').textContent=fmtDate(rd?.eventAt);renderWifeTasks();renderWifePurchases();
+ }else if(role==='husband'){
+  $('husbandLongingBalance').textContent=longingBalance()+' 💎';renderHusbandTasks();
+  if(rd?.status==='open')renderShop();
+  else if($('shop').classList.contains('on'))show('home');
  }
 }
-window.pairMainAction=()=>{
+function renderHome(){
+ let a=readPair();paired=!!(a&&room&&rd);
+ $('pairCard').style.display=paired?'block':'none';$('firstPairActions').style.display=paired?'none':'grid';
  if(!paired)return;
+ $('homeLonging').textContent=longingBalance()+' 💎';
+ let open=rd?.status==='open';
+ $('pairTitle').textContent=role==='wife'?'متصلة بالزوج ✓':'متصل بالزوجة ✓';
  if(role==='wife'){
-  if(rd?.status==='open'){show('wifeDash');renderWifePurchases()}else wifeStart();
- }else if(rd?.status==='open'){renderShop();show('shop')}
+  $('pairText').textContent=open?'المتجر الحالي مفتوح. ويمكنك أيضًا إرسال مهام رصيد الشوق طوال الأسبوع.':'الربط محفوظ. أرسلي مهام الأسبوع أو جهزي سهرة جديدة.';
+  $('pairMainBtn').textContent=open?'فتح لوحة السهرة':'تجهيز سهرة جديدة';$('pairMainBtn').disabled=false;
+ }else{
+  $('pairText').textContent=open?'المتجر جاهز، ورصيد الشوق مضاف إلى رصيدك الأساسي.':'الربط محفوظ. نفّذ مهام الأسبوع لزيادة رصيد الشوق.';
+  $('pairMainBtn').textContent=open?'دخول المتجر':'بانتظار تجهيز السهرة';$('pairMainBtn').disabled=!open;
+ }
 }
+window.pairMainAction=()=>{if(role==='wife'){if(rd?.status==='open'){renderWifePurchases();show('wifeDash')}else wifeStart()}else if(rd?.status==='open'){renderShop();show('shop')}};
+window.openLonging=()=>{if(!paired)return;role==='wife'?(renderWifeTasks(),renderTaskPresets(),show('longingWife')):(renderHusbandTasks(),show('longingHusband'))};
+
 window.disconnectPair=async()=>{
- if(!paired||!room)return;
- if(!confirm('فصل الربط الدائم بين الجهازين؟ بعد ذلك سيحتاج الزوج إلى كود جديد مرة واحدة.'))return;
- const r=room;
- try{if(role==='wife')await remove(ref(db,'rooms/'+r));else await update(ref(db,'rooms/'+r),{guestUid:null})}catch(e){console.warn(e)}
- forgetPair();room=null;rd=null;role=null;if(roomUnsub){roomUnsub();roomUnsub=null}renderPairHome();show('home');toast('تم فصل الربط')
-}
-
-function code8(){let a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',s='M';for(let i=0;i<7;i++)s+=a[Math.floor(Math.random()*a.length)];return s}
-
-window.wifeStart=()=>{role='wife';editingExisting=false;eventAt.disabled=false;budget.disabled=false;storeSaveBtn.textContent='✅ تم — نشر المتجر للزوج';loadWifeDraft();renderWifeTabs();renderWifeCatalog();renderCustoms();show('wifeSetup')};
-window.husbandStart=()=>{role='husband';if(paired&&room&&rd){if(rd.status==='open'){renderShop();show('shop')}else{renderPairHome();show('home');toast('بانتظار تجهيز الزوجة')}}else show('husbandJoin')};
-
-function normalizeSelected(){Object.entries(selected).forEach(([k,o])=>{o.options=Array.isArray(o.options)?o.options:[];if(typeof o.choiceMode!=='boolean')o.choiceMode=isChoiceDefault(o.name||'')})}
-function loadWifeDraft(){try{let x=JSON.parse(localStorage.getItem('between_store_draft')||'null');if(x){eventAt.value=x.eventAt||'';budget.value=x.budget||100;if(x.selected)Object.assign(selected,x.selected);customs=x.customs||[]}}catch{}normalizeSelected()}
-function saveWifeDraft(){try{localStorage.setItem('between_store_draft',JSON.stringify({eventAt:eventAt.value,budget:Number(budget.value)||100,selected,customs}))}catch(e){console.warn('draft save failed',e)}}
-function renderWifeTabs(){wifeTabs.innerHTML='';CATS.forEach(c=>{let b=document.createElement('button');b.className='tab '+(c.id===setupCat?'sel':'');b.textContent=c.icon+' '+c.name;b.onclick=()=>{setupCat=c.id;renderWifeTabs();renderWifeCatalog()};wifeTabs.appendChild(b)})}
-function renderWifeCatalog(){wifeCatalog.innerHTML='';normalizeSelected();let c=CATS.find(x=>x.id===setupCat);c.items.forEach((name,i)=>{let k=c.id+'_'+i,o=selected[k],locked=lockedInfoFor(k),d=document.createElement('div');d.className='item '+(locked?'disabled':'');let choices=o.options||[];
- let body='<div class="ico">'+c.icon+'</div><h3>'+esc(name)+'</h3>'+(locked?'<div class="tag">🔒 تم شراؤه — غير قابل للتعديل</div>':'')+'<div class="switch"><input type="checkbox" '+(o.enabled?'checked':'')+' data-k="'+k+'" class="en" '+(locked?'disabled':'')+'><span>إضافة للمتجر</span></div>';
- body+='<div class="switch"><input type="checkbox" '+(o.choiceMode?'checked':'')+' data-k="'+k+'" class="cm" '+(locked?'disabled':'')+'><span>له خيارات يختار الزوج أحدها</span></div>';
- if(o.choiceMode){body+='<div class="choice-editor"><div class="note">أضيفي الخيارات، ولكل خيار اسم أو صورة وسعر مستقل.</div><div id="opts_'+k+'">';
- choices.forEach((x,oi)=>{body+='<div class="choice-row"><img class="choice-thumb" src="'+esc(x.image||'')+'" alt=""><input class="input oname" data-k="'+k+'" data-i="'+oi+'" placeholder="مثال: عطر X / مطعم Y / الإطلالة 1" value="'+esc(x.name||'')+'" '+(locked?'disabled':'')+'><input class="input oprice" data-k="'+k+'" data-i="'+oi+'" type="number" min="0" step="5" value="'+(Number(x.price)||0)+'" '+(locked?'disabled':'')+'><button class="btn danger small" '+(locked?'disabled':'')+' onclick="removeChoice(\''+k+'\','+oi+')">×</button></div><div class="choice-upload"><input type="file" accept="image/*" class="oimg" data-k="'+k+'" data-i="'+oi+'" '+(locked?'disabled':'')+'> '+(x.image?'<button class="btn ghost small" '+(locked?'disabled':'')+' onclick="clearChoiceImage(\''+k+'\','+oi+')">حذف الصورة</button>':'')+'</div>'});
- body+='</div><button class="btn ghost full small" style="margin-top:8px" '+(locked?'disabled':'')+' onclick="addChoice(\''+k+'\')">+ إضافة خيار</button></div>'}
- else{body+='<div class="editor"><span class="note">السعر</span><input class="input price" data-k="'+k+'" type="number" min="0" step="5" value="'+o.price+'" '+(locked?'disabled':'')+'><span>💎</span></div>'}
- d.innerHTML=body;wifeCatalog.appendChild(d)});
- wifeCatalog.querySelectorAll('.en').forEach(x=>x.onchange=()=>{selected[x.dataset.k].enabled=x.checked;saveWifeDraft()});
- wifeCatalog.querySelectorAll('.cm').forEach(x=>x.onchange=()=>{let o=selected[x.dataset.k];o.choiceMode=x.checked;if(o.choiceMode&&!o.options.length)o.options.push({name:'',price:o.price||defaults[o.cat],image:'',oid:''});saveWifeDraft();renderWifeCatalog()});
- wifeCatalog.querySelectorAll('.price').forEach(x=>x.oninput=()=>{selected[x.dataset.k].price=Math.max(0,Number(x.value)||0);saveWifeDraft()});
- wifeCatalog.querySelectorAll('.oname').forEach(x=>x.oninput=()=>{selected[x.dataset.k].options[+x.dataset.i].name=x.value;saveWifeDraft()});
- wifeCatalog.querySelectorAll('.oprice').forEach(x=>x.oninput=()=>{selected[x.dataset.k].options[+x.dataset.i].price=Math.max(0,Number(x.value)||0);saveWifeDraft()});
- wifeCatalog.querySelectorAll('.oimg').forEach(x=>x.onchange=async()=>{let file=x.files?.[0];if(!file)return;toast('جاري تجهيز الصورة…');let img=await compressImage(file);selected[x.dataset.k].options[+x.dataset.i].image=img;saveWifeDraft();renderWifeCatalog();toast('تمت إضافة الصورة')})
-}
-window.addChoice=k=>{normalizeSelected();selected[k].options.push({name:'',price:selected[k].price||defaults[selected[k].cat],image:'',oid:''});saveWifeDraft();renderWifeCatalog()};
-window.removeChoice=(k,i)=>{selected[k].options.splice(i,1);saveWifeDraft();renderWifeCatalog()};
-window.clearChoiceImage=(k,i)=>{selected[k].options[i].image='';saveWifeDraft();renderWifeCatalog()};
-async function compressImage(file){return new Promise((resolve,reject)=>{let fr=new FileReader();fr.onload=()=>{let im=new Image();im.onload=()=>{let max=360,scale=Math.min(1,max/Math.max(im.width,im.height)),w=Math.max(1,Math.round(im.width*scale)),h=Math.max(1,Math.round(im.height*scale)),cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(im,0,0,w,h);resolve(cv.toDataURL('image/jpeg',.65))};im.onerror=reject;im.src=fr.result};fr.onerror=reject;fr.readAsDataURL(file)})}
-function renderCustoms(){customEditor.innerHTML='';customs.forEach((x,i)=>{let d=document.createElement('div');d.className='card';d.style.padding='12px';d.innerHTML='<div class="editor"><input class="input cname" data-i="'+i+'" placeholder="اسم خاص على جهاز الزوجة" value="'+esc(x.name||'')+'"><input class="input cprice" data-i="'+i+'" type="number" min="0" step="5" value="'+(x.price||25)+'"><button class="btn danger small" onclick="removeCustom('+i+')">×</button></div><textarea class="textarea cdesc" data-i="'+i+'" placeholder="وصف أو ملاحظة خاصة — تبقى محليًا">'+esc(x.desc||'')+'</textarea>';customEditor.appendChild(d)});
- customEditor.querySelectorAll('.cname').forEach(e=>e.oninput=()=>{customs[+e.dataset.i].name=e.value;saveWifeDraft()});customEditor.querySelectorAll('.cprice').forEach(e=>e.oninput=()=>{customs[+e.dataset.i].price=Number(e.value)||0;saveWifeDraft()});customEditor.querySelectorAll('.cdesc').forEach(e=>e.oninput=()=>{customs[+e.dataset.i].desc=e.value;saveWifeDraft()})}
-window.addCustom=()=>{customs.push({name:'',desc:'',price:25});renderCustoms();saveWifeDraft()};window.removeCustom=i=>{customs.splice(i,1);renderCustoms();saveWifeDraft()};
-
-function hydrateEditorFromRoom(){
- normalizeSelected();
- Object.values(selected).forEach(o=>{o.enabled=false;o.options=[]});
- const oldCustoms=customs.slice();
- let customMap={};
- Object.values(rd?.items||{}).forEach(it=>{
-  if(it.kind==='choice'&&selected[it.groupId]){
-   let o=selected[it.groupId];o.enabled=true;o.choiceMode=true;o.options.push({name:it.name||'',price:Number(it.price)||0,image:it.image||'',oid:it.id});
-  }else if(it.kind==='preset'&&selected[it.id]){
-   let o=selected[it.id];o.enabled=true;o.choiceMode=false;o.price=Number(it.price)||0;
-  }else if(it.kind==='custom'){
-   let n=Number(String(it.id).split('_')[1]);customMap[n]={name:oldCustoms[n]?.name||'',desc:oldCustoms[n]?.desc||'',price:Number(it.price)||25};
-  }
- });
- customs=[];Object.keys(customMap).sort((a,b)=>a-b).forEach(k=>customs[Number(k)]=customMap[k]);
- customs=customs.filter(Boolean);
- eventAt.value=rd?.eventAt||'';budget.value=rd?.budget||100;
- saveWifeDraft();
-}
-function lockedInfoFor(key){
- if(!editingExisting||!rd)return false;
- let p=Object.values(rd.purchases||{});
- return p.some(x=>x.itemId===key||x.groupId===key);
-}
-window.editStore=()=>{
- if(!room||!rd||role!=='wife')return;
- if(saleClosed())return toast('بدأ موعد السهرة؛ لا يمكن تعديل المتجر الآن');
- editingExisting=true;hydrateEditorFromRoom();storeSaveBtn.textContent='✅ تم — نشر التعديلات للزوج';
- eventAt.disabled=true;budget.disabled=true;setupCat='look';renderWifeTabs();renderWifeCatalog();renderCustoms();show('wifeSetup')
+ if(!paired||!room)return;if(!confirm('فصل الربط الدائم بين الجهازين؟'))return;
+ try{if(role==='wife')await remove(ref(db,'rooms/'+room));else await update(ref(db,'rooms/'+room),{guestUid:null})}catch(e){}
+ forgetPair();room=null;rd=null;role=null;if(unsub){unsub();unsub=null}renderHome();show('home');toast('تم فصل الربط')
 };
-function buildPublicItems(){let out={};normalizeSelected();Object.entries(selected).forEach(([k,o])=>{if(!o.enabled)return;if(o.choiceMode){let good=(o.options||[]).filter(x=>(x.name||'').trim()||x.image);good.forEach((x,i)=>{let id=x.oid||k+'__opt_'+i;out[id]={id,cat:o.cat,groupId:k,groupName:o.name,name:(x.name||('الخيار '+(i+1))).trim(),price:Number(x.price)||0,image:x.image||'',kind:'choice'}})}else out[k]={id:k,cat:o.cat,name:o.name,price:o.price,kind:'preset'}});customs.forEach((x,i)=>{if((x.name||x.desc).trim())out['custom_'+i]={id:'custom_'+i,cat:'private',name:'🔐 خيار خاص '+(i+1),price:Number(x.price)||25,kind:'custom'}});return out}
+
+window.wifeStart=()=>{role='wife';editingExisting=false;loadDraft();$('eventAt').disabled=false;$('budget').disabled=false;$('eventAt').value='';$('budget').value=100;$('storeSaveBtn').textContent='✅ تم — نشر المتجر للزوج';renderSimpleEditor();show('wifeSetup')};
+window.husbandStart=()=>{role='husband';if(paired&&room&&rd){if(rd.status==='open'){renderShop();show('shop')}else{renderHome();show('home');toast('بانتظار تجهيز الزوجة')}}else show('husbandJoin')};
+
+function priceInput(val,attr){return '<input class="input '+attr+'" type="number" min="0" step="5" value="'+Number(val||0)+'">'}
+function renderSimpleEditor(){
+ const ed=$('simpleEditor');ed.innerHTML='';
+ // Look
+ let look=document.createElement('div');look.className='card';
+ let outfitRows=OUTFIT_OPTIONS.map(n=>'<div class="simple-row"><input type="checkbox" class="outfit-on" data-name="'+esc(n)+'" '+(draft.outfit[n]?.on?'checked':'')+'><b>'+esc(n)+'</b><div class="pricebox">'+priceInput(draft.outfit[n]?.price||15,'outfit-price')+'<span>💎</span></div></div>').join('');
+ let lingerie=draft.lingerie.map((x,i)=>'<div class="lingerie-row"><img class="lingerie-thumb" src="'+esc(x.image||'')+'"><div><input class="input lingerie-name" data-i="'+i+'" placeholder="اسم مختصر اختياري" value="'+esc(x.name||'')+'"><div class="upload"><input type="file" accept="image/*" class="lingerie-file" data-i="'+i+'"></div></div><input class="input lingerie-price" data-i="'+i+'" type="number" min="0" step="5" value="'+Number(x.price||20)+'"><button class="btn danger small" onclick="removeLingerie('+i+')">×</button></div>').join('');
+ let makeup=draft.makeup.map((x,i)=>'<div class="choice-line"><input class="input makeup-name" data-i="'+i+'" placeholder="مثال: مكياج هادئ / أحمر داكن" value="'+esc(x.name||'')+'"><input class="input makeup-price" data-i="'+i+'" type="number" min="0" step="5" value="'+Number(x.price||10)+'"></div>').join('');
+ look.innerHTML='<div class="section-title"><div class="emo">👗</div><div><h3>الإطلالة والملابس</h3><div class="note">اختيارات كلمات بسيطة، والصور فقط للملابس الداخلية.</div></div></div><div class="note" style="margin-bottom:7px">الإطلالة</div><div class="simple-list">'+outfitRows+'</div><div class="title" style="font-size:16px;margin-top:14px">الملابس الداخلية — صور فقط</div><div id="lingerieRows">'+(lingerie||'<div class="muted">لا توجد صور مضافة.</div>')+'</div><button class="btn ghost full small" style="margin-top:8px" onclick="addLingerie()">+ إضافة صورة</button><div class="title" style="font-size:16px;margin-top:14px">المكياج / أحمر الشفاه</div>'+makeup;
+ ed.appendChild(look);
+
+ // Perfume
+ let p=document.createElement('div');p.className='card';
+ p.innerHTML='<div class="section-title"><div class="emo">🌹</div><div><h3>العطر</h3><div class="note">ثلاثة خيارات فقط.</div></div></div>'+draft.perfumes.map((x,i)=>'<div class="perfume-line"><input class="input perfume-name" data-i="'+i+'" placeholder="اسم العطر '+(i+1)+'" value="'+esc(x.name||'')+'"><input class="input perfume-price" data-i="'+i+'" type="number" min="0" step="5" value="'+Number(x.price||15)+'"></div>').join('');
+ ed.appendChild(p);
+
+ // Dine
+ let dine=document.createElement('div');dine.className='card';
+ let drows=DINNER_OPTIONS.map(n=>'<div class="simple-row"><input type="checkbox" class="dinner-on" data-name="'+esc(n)+'" '+(draft.dinner[n]?.on?'checked':'')+'><b>'+esc(n)+'</b><div class="pricebox">'+priceInput(draft.dinner[n]?.price||10,'dinner-price')+'<span>💎</span></div></div>').join('');
+ dine.innerHTML='<div class="section-title"><div class="emo">☕</div><div><h3>القهوة والعشاء</h3><div class="note">الزوج يختار قهوة أو أحد أنواع العشاء.</div></div></div><div class="simple-list">'+drows+'</div><div class="choice-line"><input id="extraDinnerName" class="input" placeholder="نوع عشاء إضافي" value="'+esc(draft.extraDinner.name||'')+'"><input id="extraDinnerPrice" class="input" type="number" min="0" step="5" value="'+Number(draft.extraDinner.price||20)+'"></div><div class="title" style="font-size:16px;margin-top:14px">إضافات</div>'+directToggleHtml('dessert','الحلو',draft.dessert)+directToggleHtml('drink','المشروب',draft.drink);
+ ed.appendChild(dine);
+
+ ed.appendChild(renderDirectSection('🚗','المشوار والخروج','outing'));
+ ed.appendChild(renderDirectSection('❤️','الرومانسية الهادئة','romance'));
+ let s=renderDirectSection('🎁','مفاجآت الزوجة','surprise');
+ s.innerHTML += '<div class="title" style="font-size:16px;margin-top:14px">مفاجأة من عند الزوجة</div><div class="choice-line"><input id="customSurpriseName" class="input" placeholder="اسم المفاجأة" value="'+esc(draft.customSurprise.name||'')+'"><input id="customSurprisePrice" class="input" type="number" min="0" step="5" value="'+Number(draft.customSurprise.price||20)+'"></div>';
+ ed.appendChild(s);
+ bindSimpleEditor();
+}
+function directToggleHtml(id,label,obj){return '<div class="simple-row"><input type="checkbox" class="direct-on" data-id="'+id+'" '+(obj?.on?'checked':'')+'><b>'+esc(label)+'</b><div class="pricebox"><input class="input direct-price" data-id="'+id+'" type="number" min="0" step="5" value="'+Number(obj?.price||0)+'"><span>💎</span></div></div>'}
+function renderDirectSection(emo,title,key){let d=document.createElement('div');d.className='card';d.innerHTML='<div class="section-title"><div class="emo">'+emo+'</div><div><h3>'+title+'</h3></div></div><div class="simple-list">'+DIRECTS[key].map(([id,name,price])=>directToggleHtml(id,name,draft.direct[id]||{on:true,price})).join('')+'</div>';return d}
+function bindSimpleEditor(){
+ document.querySelectorAll('.outfit-on').forEach((e,i)=>e.onchange=()=>{draft.outfit[e.dataset.name].on=e.checked;saveDraft()});
+ document.querySelectorAll('.outfit-price').forEach((e,i)=>e.oninput=()=>{let n=OUTFIT_OPTIONS[i];draft.outfit[n].price=Number(e.value)||0;saveDraft()});
+ document.querySelectorAll('.dinner-on').forEach(e=>e.onchange=()=>{draft.dinner[e.dataset.name].on=e.checked;saveDraft()});
+ document.querySelectorAll('.dinner-price').forEach((e,i)=>e.oninput=()=>{let n=DINNER_OPTIONS[i];draft.dinner[n].price=Number(e.value)||0;saveDraft()});
+ document.querySelectorAll('.perfume-name').forEach(e=>e.oninput=()=>{draft.perfumes[+e.dataset.i].name=e.value;saveDraft()});
+ document.querySelectorAll('.perfume-price').forEach(e=>e.oninput=()=>{draft.perfumes[+e.dataset.i].price=Number(e.value)||0;saveDraft()});
+ document.querySelectorAll('.makeup-name').forEach(e=>e.oninput=()=>{draft.makeup[+e.dataset.i].name=e.value;saveDraft()});
+ document.querySelectorAll('.makeup-price').forEach(e=>e.oninput=()=>{draft.makeup[+e.dataset.i].price=Number(e.value)||0;saveDraft()});
+ document.querySelectorAll('.lingerie-name').forEach(e=>e.oninput=()=>{draft.lingerie[+e.dataset.i].name=e.value;saveDraft()});
+ document.querySelectorAll('.lingerie-price').forEach(e=>e.oninput=()=>{draft.lingerie[+e.dataset.i].price=Number(e.value)||0;saveDraft()});
+ document.querySelectorAll('.lingerie-file').forEach(e=>e.onchange=async()=>{let file=e.files?.[0];if(!file)return;toast('جاري تجهيز الصورة…');draft.lingerie[+e.dataset.i].image=await compressImage(file);saveDraft();renderSimpleEditor();toast('تمت إضافة الصورة')});
+ document.querySelectorAll('.direct-on').forEach(e=>e.onchange=()=>{let id=e.dataset.id;if(id==='dessert')draft.dessert.on=e.checked;else if(id==='drink')draft.drink.on=e.checked;else draft.direct[id].on=e.checked;saveDraft()});
+ document.querySelectorAll('.direct-price').forEach(e=>e.oninput=()=>{let id=e.dataset.id;if(id==='dessert')draft.dessert.price=Number(e.value)||0;else if(id==='drink')draft.drink.price=Number(e.value)||0;else draft.direct[id].price=Number(e.value)||0;saveDraft()});
+ $('extraDinnerName').oninput=e=>{draft.extraDinner.name=e.target.value;saveDraft()};$('extraDinnerPrice').oninput=e=>{draft.extraDinner.price=Number(e.target.value)||0;saveDraft()};
+ $('customSurpriseName').oninput=e=>{draft.customSurprise.name=e.target.value;saveDraft()};$('customSurprisePrice').oninput=e=>{draft.customSurprise.price=Number(e.target.value)||0;saveDraft()};
+}
+window.addLingerie=()=>{if(draft.lingerie.length>=6)return toast('الحد الأقصى 6 صور');draft.lingerie.push({name:'',price:20,image:''});saveDraft();renderSimpleEditor()};
+window.removeLingerie=i=>{draft.lingerie.splice(i,1);saveDraft();renderSimpleEditor()};
+async function compressImage(file){return new Promise((resolve,reject)=>{let fr=new FileReader();fr.onload=()=>{let im=new Image();im.onload=()=>{let max=420,sc=Math.min(1,max/Math.max(im.width,im.height)),cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(im.width*sc));cv.height=Math.max(1,Math.round(im.height*sc));cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);resolve(cv.toDataURL('image/jpeg',.68))};im.onerror=reject;im.src=fr.result};fr.onerror=reject;fr.readAsDataURL(file)})}
+
+function addChoiceItems(out,cat,groupId,groupName,arr){arr.forEach((x,i)=>{if(!x.name)return;let id=groupId+'_'+i;out[id]={id,cat,groupId,groupName,name:x.name,price:Number(x.price)||0,image:x.image||'',kind:'choice'}})}
+function buildItems(){
+ let out={};
+ addChoiceItems(out,'look','look_outfit','اختيار الإطلالة',OUTFIT_OPTIONS.filter(n=>draft.outfit[n]?.on).map(n=>({name:n,price:draft.outfit[n].price})));
+ addChoiceItems(out,'look','look_lingerie','اختيار الملابس الداخلية',draft.lingerie.filter(x=>x.image).map((x,i)=>({name:x.name||('الخيار '+(i+1)),price:x.price,image:x.image})));
+ addChoiceItems(out,'look','look_makeup','اختيار المكياج / أحمر الشفاه',draft.makeup.filter(x=>x.name.trim()));
+ addChoiceItems(out,'perfume','perfume_choice','اختيار العطر',draft.perfumes.filter(x=>x.name.trim()));
+ let meals=DINNER_OPTIONS.filter(n=>draft.dinner[n]?.on).map(n=>({name:n,price:draft.dinner[n].price}));
+ if(draft.extraDinner.name.trim())meals.push({name:draft.extraDinner.name.trim(),price:draft.extraDinner.price});
+ addChoiceItems(out,'dine','meal_choice','قهوة أو عشاء',meals);
+ if(draft.dessert.on)out.dessert={id:'dessert',cat:'dine',name:'الحلو',price:Number(draft.dessert.price)||0,kind:'preset'};
+ if(draft.drink.on)out.drink={id:'drink',cat:'dine',name:'المشروب',price:Number(draft.drink.price)||0,kind:'preset'};
+ for(const key of ['outing','romance','surprise'])DIRECTS[key].forEach(([id,name])=>{let o=draft.direct[id];if(o?.on)out[id]={id,cat:key,name,price:Number(o.price)||0,kind:'preset'}});
+ if(draft.customSurprise.name.trim())out.custom_surprise={id:'custom_surprise',cat:'surprise',name:draft.customSurprise.name.trim(),price:Number(draft.customSurprise.price)||0,kind:'preset'};
+ return out;
+}
+
+function hydrateDraftFromItems(){
+ draft=freshDraft();
+ OUTFIT_OPTIONS.forEach(n=>draft.outfit[n].on=false);DINNER_OPTIONS.forEach(n=>draft.dinner[n].on=false);
+ draft.dessert.on=false;draft.drink.on=false;Object.keys(draft.direct).forEach(id=>draft.direct[id].on=false);
+ draft.lingerie=[];draft.makeup=[{name:'',price:10},{name:'',price:10},{name:'',price:10}];draft.perfumes=[{name:'',price:15},{name:'',price:15},{name:'',price:15}];
+ let makeup=[],perfumes=[];
+ Object.values(rd?.items||{}).forEach(it=>{
+  if(it.groupId==='look_outfit'&&draft.outfit[it.name]){draft.outfit[it.name]={on:true,price:Number(it.price)||0}}
+  else if(it.groupId==='look_lingerie')draft.lingerie.push({name:it.name||'',price:Number(it.price)||0,image:it.image||''});
+  else if(it.groupId==='look_makeup')makeup.push({name:it.name||'',price:Number(it.price)||0});
+  else if(it.groupId==='perfume_choice')perfumes.push({name:it.name||'',price:Number(it.price)||0});
+  else if(it.groupId==='meal_choice'){if(draft.dinner[it.name])draft.dinner[it.name]={on:true,price:Number(it.price)||0};else draft.extraDinner={name:it.name||'',price:Number(it.price)||0}}
+  else if(it.id==='dessert')draft.dessert={on:true,price:Number(it.price)||0};
+  else if(it.id==='drink')draft.drink={on:true,price:Number(it.price)||0};
+  else if(draft.direct[it.id])draft.direct[it.id]={on:true,price:Number(it.price)||0};
+  else if(it.id==='custom_surprise')draft.customSurprise={name:it.name||'',price:Number(it.price)||0};
+ });
+ makeup.slice(0,3).forEach((x,i)=>draft.makeup[i]=x);perfumes.slice(0,3).forEach((x,i)=>draft.perfumes[i]=x);saveDraft()
+}
+window.editStore=()=>{if(!rd||role!=='wife'||rd.status!=='open')return;editingExisting=true;hydrateDraftFromItems();$('eventAt').value=rd.eventAt||'';$('budget').value=rd.baseBudget??rd.budget??100;$('eventAt').disabled=true;$('budget').disabled=true;$('storeSaveBtn').textContent='✅ تم — نشر التعديلات للزوج';renderSimpleEditor();show('wifeSetup')};
+
 window.createStore=async()=>{try{
- await ensure();saveWifeDraft();let items=buildPublicItems();if(!Object.keys(items).length)return toast('اختاري عنصرًا واحدًا على الأقل وأضيفي خياراته');
+ await ensure();let items=buildItems();if(!Object.keys(items).length)return toast('فعّلي عنصرًا واحدًا على الأقل');
+ let b=Math.max(10,Number($('budget').value)||100);
  if(editingExisting&&room&&rd){
   let lockedIds=purchasedIds(),lockedGroups=purchasedGroups(),old=rd.items||{};
   Object.values(old).forEach(it=>{if(lockedIds.has(it.id)||(it.groupId&&lockedGroups.has(it.groupId)))items[it.id]=it});
-  await update(ref(db,'rooms/'+room),{items,publishedAt:Date.now()});
-  editingExisting=false;eventAt.disabled=false;budget.disabled=false;storeSaveBtn.textContent='✅ تم — نشر المتجر للزوج';show('wifeLobby');toast('تم نشر التعديلات للزوج ✓');return
+  await update(ref(db,'rooms/'+room),{items,publishedAt:Date.now()});editingExisting=false;$('eventAt').disabled=false;$('budget').disabled=false;show('wifeLobby');toast('تم نشر التعديلات للزوج ✓');return;
  }
- role='wife';let b=Math.max(10,Number(budget.value)||100);
+ role='wife';
  if(paired&&room&&rd&&rd.hostUid===uid){
-   await update(ref(db,'rooms/'+room),{status:'open',eventAt:eventAt.value||'',budget:b,balance:b,items,purchases:null,publishedAt:Date.now()});
-   remember();listenRoom(false);renderPairHome();show('wifeLobby');toast('تم نشر المتجر للزوج ✓');return
+  await update(ref(db,'rooms/'+room),{status:'open',eventAt:$('eventAt').value||'',baseBudget:b,baseBalance:b,budget:b,balance:b+longingBalance(),items,purchases:null,publishedAt:Date.now()});
+  remember();listenRoom();show('wifeLobby');toast('تم نشر المتجر للزوج ✓');return;
  }
  room=code8();
- await set(ref(db,'rooms/'+room),{game:'between-store',hostUid:uid,hostRole:'wife',status:'open',eventAt:eventAt.value||'',budget:b,balance:b,items,purchases:{},publishedAt:Date.now()});
- remember();listenRoom(true)
-}catch(e){console.error(e);toast(editingExisting?'تعذر حفظ التعديلات':'تعذر إنشاء المتجر')}};
-window.joinStore=async()=>{try{await ensure();let r=joinCode.value.trim().toUpperCase();if(r.length!==8||r[0]!=='M')return toast('أدخل كود المتجر الصحيح');await update(ref(db,'rooms/'+r),{guestUid:uid});let s=await get(ref(db,'rooms/'+r));if(!s.exists()||s.val().game!=='between-store')throw new Error('bad');room=r;role='husband';rd=s.val();remember();listenRoom()}catch(e){console.error(e);toast('المتجر غير موجود أو مغلق')}};
+ await set(ref(db,'rooms/'+room),{game:'between-store',hostUid:uid,hostRole:'wife',guestUid:null,status:'open',eventAt:$('eventAt').value||'',baseBudget:b,baseBalance:b,budget:b,balance:b,longingBalance:0,items,purchases:{},longingTasks:{},publishedAt:Date.now()});
+ remember();listenRoom();show('wifeLobby');toast('تم إنشاء المتجر ✓');
+}catch(e){console.error(e);toast('تعذر نشر المتجر')}};
 
-function listenRoom(autoNavigate=true){
- if(roomUnsub)roomUnsub();
- roomUnsub=onValue(ref(db,'rooms/'+room),s=>{
-  if(!s.exists()){forgetPair();room=null;rd=null;role=null;renderPairHome();show('home');toast('تم إنهاء الاتصال');return}
-  rd=s.val();paired=true;remember();renderPairHome();
-  if(role==='wife'){
-   wifeCode.textContent=room;wifeOpp.textContent=rd.guestUid?'الزوج متصل دائمًا ✓':'بانتظار دخول الزوج لأول مرة…';wifeBalance.textContent=(rd.balance??rd.budget)+' 💎';wifeDate.textContent=fmtDate(rd.eventAt);renderWifePurchases();
-   if(autoNavigate&&!(editingExisting&&document.getElementById('wifeSetup').classList.contains('on'))&&!document.getElementById('wifeDash').classList.contains('on'))show('wifeLobby')
-  }else{
-   if(rd.status==='open'){
-    renderShop();
-    if(autoNavigate&&!document.getElementById('home').classList.contains('on'))show('shop')
-   }else{
-    cart=[];renderPairHome();
-    if(!document.getElementById('home').classList.contains('on'))show('home')
-   }
-  }
- })
+window.joinStore=async()=>{try{
+ await ensure();let r=$('joinCode').value.trim().toUpperCase();if(r.length!==8||r[0]!=='M')return toast('أدخل كود المتجر الصحيح');
+ let s=await get(ref(db,'rooms/'+r));if(!s.exists()||s.val().game!=='between-store')return toast('المتجر غير موجود');
+ let x=s.val();if(x.guestUid&&x.guestUid!==uid)return toast('هذا المتجر مرتبط بجهاز آخر');
+ await update(ref(db,'rooms/'+r),{guestUid:uid});s=await get(ref(db,'rooms/'+r));room=r;role='husband';rd=s.val();remember();listenRoom();renderHome();rd.status==='open'?(renderShop(),show('shop')):show('home');
+}catch(e){console.error(e);toast('تعذر الدخول')}};
+
+function renderTaskPresets(){
+ $('taskPresets').innerHTML='';TASK_PRESETS.forEach(([name,reward],i)=>{let d=document.createElement('div');d.className='task-preset';d.innerHTML='<b>'+esc(name)+'</b><button class="btn primary small" onclick="sendPresetTask('+i+')">إرسال • '+reward+' 💎</button>';$('taskPresets').appendChild(d)})
 }
-function catInfo(id){return CATS.find(c=>c.id===id)||{icon:'💎',name:id}}
+window.sendPresetTask=i=>sendTask(TASK_PRESETS[i][0],TASK_PRESETS[i][1]);
+window.sendCustomTask=()=>{let t=$('customTaskText').value.trim(),r=Math.max(1,Number($('customTaskReward').value)||10);if(!t)return toast('اكتبي المهمة');sendTask(t,r);$('customTaskText').value=''};
+async function sendTask(text,reward){if(role!=='wife'||!room)return;let k=push(ref(db,'rooms/'+room+'/longingTasks')).key;await set(ref(db,'rooms/'+room+'/longingTasks/'+k),{text,reward,createdAt:Date.now(),status:'pending'});toast('تم إرسال المهمة ✓')}
+function taskEntries(){return Object.entries(rd?.longingTasks||{}).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0))}
+function renderWifeTasks(){
+ if(!$('wifeTasks'))return;$('wifeTasks').innerHTML='';let a=taskEntries();if(!a.length){$('wifeTasks').innerHTML='<div class="muted">لم ترسلي مهامًا بعد.</div>';return}
+ a.forEach(([id,t])=>{let d=document.createElement('div');d.className='task '+(t.status==='done'?'done':'');d.innerHTML='<div><b>'+esc(t.text)+'</b><div class="note">'+(t.status==='done'?'تم التنفيذ ✓':'بانتظار التنفيذ')+'</div></div><div><div class="reward">'+t.reward+' 💎</div>'+(t.status==='pending'?'<button class="btn danger small" style="margin-top:6px" onclick="deleteTask(\''+id+'\')">حذف</button>':'')+'</div>';$('wifeTasks').appendChild(d)})
+}
+window.deleteTask=async id=>{let t=rd?.longingTasks?.[id];if(!t||t.status!=='pending')return;await remove(ref(db,'rooms/'+room+'/longingTasks/'+id))};
+function renderHusbandTasks(){
+ if(!$('husbandTasks'))return;$('husbandTasks').innerHTML='';let a=taskEntries().filter(([,t])=>t.status!=='done');if(!a.length){$('husbandTasks').innerHTML='<div class="muted">لا توجد مهام معلقة الآن.</div>';return}
+ a.forEach(([id,t])=>{let d=document.createElement('div');d.className='task';d.innerHTML='<div><b>'+esc(t.text)+'</b><div class="reward" style="margin-top:4px">+'+t.reward+' 💎</div></div><button class="btn ok small" onclick="completeTask(\''+id+'\')">تم التنفيذ ✓</button>';$('husbandTasks').appendChild(d)})
+}
+window.completeTask=async id=>{try{
+ let s=await get(ref(db,'rooms/'+room));if(!s.exists())return;let x=s.val(),t=x.longingTasks?.[id];if(!t||t.status!=='pending')return toast('تم احتسابها سابقًا');
+ let nb=Number(x.longingBalance||0)+Number(t.reward||0),patch={};patch['rooms/'+room+'/longingTasks/'+id+'/status']='done';patch['rooms/'+room+'/longingTasks/'+id+'/doneAt']=Date.now();patch['rooms/'+room+'/longingBalance']=nb;patch['rooms/'+room+'/balance']=Number(x.baseBalance??x.balance??x.budget??0)+nb;await update(ref(db),patch);toast('أضيف '+t.reward+' 💎 إلى رصيد الشوق');
+}catch(e){console.error(e);toast('تعذر احتساب المهمة')}};
+
+function renderShopTabs(){
+ let cats=['all',...new Set(Object.values(rd?.items||{}).map(x=>x.cat))];$('shopTabs').innerHTML='';
+ cats.forEach(id=>{let b=document.createElement('button');b.className='tab '+(id===shopCat?'sel':'');b.textContent=id==='all'?'🛍️ الكل':catInfo(id).icon+' '+catInfo(id).name;b.onclick=()=>{shopCat=id;renderShop()};$('shopTabs').appendChild(b)})
+}
 function visibleItems(){return Object.values(rd?.items||{}).filter(x=>shopCat==='all'||x.cat===shopCat)}
-function renderShopTabs(){shopTabs.innerHTML='';let cats=['all',...new Set(Object.values(rd.items||{}).map(x=>x.cat))];cats.forEach(id=>{let b=document.createElement('button');b.className='tab '+(id===shopCat?'sel':'');b.textContent=id==='all'?'🛍️ الكل':catInfo(id).icon+' '+catInfo(id).name;b.onclick=()=>{shopCat=id;renderShop()};shopTabs.appendChild(b)})}
-function purchasedIds(){return new Set(Object.values(rd?.purchases||{}).map(p=>p.itemId))}
-function purchasedGroups(){return new Set(Object.values(rd?.purchases||{}).map(p=>p.groupId).filter(Boolean))}
-function saleClosed(){return !!rd?.eventAt&&Date.now()>=new Date(rd.eventAt).getTime()}
-window.refreshStore=async()=>{if(!room)return;try{let s=await get(ref(db,'rooms/'+room));if(!s.exists())return toast('المتجر غير موجود');rd=s.val();cart=cart.filter(id=>rd.items&&rd.items[id]);renderShop();toast('تم تحديث المتجر ✓')}catch(e){console.error(e);toast('تعذر تحديث المتجر')}}
-function renderShop(){if(!rd)return;let closed=saleClosed();balanceText.textContent=(rd.balance??rd.budget)+' 💎';shopDate.textContent=fmtDate(rd.eventAt);if(window.refreshStamp)refreshStamp.textContent='آخر تحديث: '+(rd.publishedAt?fmtDate(rd.publishedAt):'—');nightNotice.style.display=closed?'block':'none';shopCard.style.display=closed?'none':'block';cartBar.style.display=closed?'none':'flex';if(!closed){renderShopTabs();let bought=purchasedIds(),bGroups=purchasedGroups(),vis=visibleItems();shopCatalog.innerHTML='';
- let groups={};vis.filter(x=>x.kind==='choice').forEach(x=>{(groups[x.groupId]??=[]).push(x)});
- Object.values(groups).forEach(opts=>{let g=opts[0],disabled=bGroups.has(g.groupId),d=document.createElement('div');d.className='item '+(disabled?'disabled':'');let inner='<div class="group-title"><div class="ico">'+catInfo(g.cat).icon+'</div><h3>'+esc(g.groupName)+'</h3><div class="meta">'+(disabled?'تم اختيار أحد الخيارات':'اختر خيارًا واحدًا')+'</div></div><div class="option-grid">';
- opts.forEach(it=>{inner+='<div class="option-card">'+(it.image?'<img class="zoomable" src="'+esc(it.image)+'" alt="" onclick="openImageById(\''+it.id+'\')" title="اضغط لتكبير الصورة">':'')+'<b>'+esc(it.name)+'</b><div class="price">'+it.price+' 💎</div><button class="btn '+(cart.includes(it.id)?'ghost':'primary')+' full small" style="margin-top:7px" '+(disabled?'disabled':'')+' onclick="toggleCart(\''+it.id+'\')">'+(cart.includes(it.id)?'إزالة':'اختيار')+'</button></div>'});inner+='</div>';d.innerHTML=inner;shopCatalog.appendChild(d)});
- vis.filter(x=>x.kind!=='choice').forEach(it=>{let ci=catInfo(it.cat),d=document.createElement('div');d.className='item '+(bought.has(it.id)?'disabled':'');d.innerHTML='<div class="ico">'+ci.icon+'</div><h3>'+esc(it.name)+'</h3><div class="price">'+it.price+' 💎</div><div class="meta">'+(it.kind==='custom'?'خاص — التفاصيل عند الزوجة':'متاح مرة واحدة')+'</div><button class="btn '+(bought.has(it.id)?'ghost':'primary')+' full small" style="margin-top:9px" '+(bought.has(it.id)?'disabled':'')+' onclick="toggleCart(\''+it.id+'\')">'+(cart.includes(it.id)?'إزالة من السلة':'أضف للسلة')+'</button>';shopCatalog.appendChild(d)});renderCart()}renderMyPurchases()}
-window.toggleCart=id=>{let it=rd.items[id];if(!it||purchasedIds().has(id)||(it.groupId&&purchasedGroups().has(it.groupId)))return;if(cart.includes(id))cart=cart.filter(x=>x!==id);else{if(it.groupId)cart=cart.filter(x=>rd.items[x]?.groupId!==it.groupId);cart=[...cart,id]}renderShop()};
-function renderCart(){let items=cart.map(id=>rd.items[id]).filter(Boolean),total=items.reduce((a,x)=>a+Number(x.price||0),0);cartCount.textContent=items.length+' عناصر';cartTotal.textContent='المجموع '+total+' 💎'}
-window.checkout=async()=>{if(saleClosed())return toast('انتهى وقت البيع وبدأ موعد السهرة');if(!cart.length)return toast('السلة فارغة');let snap=await get(ref(db,'rooms/'+room)),x=snap.val(),items=cart.map(id=>x.items[id]).filter(Boolean),already=new Set(Object.values(x.purchases||{}).map(p=>p.itemId));let boughtGroups=new Set(Object.values(x.purchases||{}).map(p=>p.groupId).filter(Boolean));items=items.filter(i=>!already.has(i.id)&&(!i.groupId||!boughtGroups.has(i.groupId)));let total=items.reduce((a,i)=>a+Number(i.price||0),0),bal=Number(x.balance??x.budget);if(total>bal)return toast('الرصيد لا يكفي');let patch={};items.forEach(it=>{let k=push(ref(db,'rooms/'+room+'/purchases')).key;patch['rooms/'+room+'/purchases/'+k]={itemId:it.id,name:it.name,groupId:it.groupId||'',groupName:it.groupName||'',price:it.price,cat:it.cat,kind:it.kind,image:it.image||'',boughtAt:Date.now(),used:false}});patch['rooms/'+room+'/balance']=bal-total;await update(ref(db),patch);cart=[];modal.innerHTML='<div class="big">🛍️</div><h2>تم الشراء</h2><p>تم خصم '+total+' 💎 من الرصيد.<br>سيتم الرجوع للرئيسية.</p>';overlay.classList.add('on');setTimeout(()=>{overlay.classList.remove('on');renderPairHome();show('home')},1100)};
-function renderMyPurchases(){myPurchases.innerHTML='';let ps=Object.values(rd?.purchases||{});if(!ps.length)return myPurchases.innerHTML='<div class="muted">لم تشترِ شيئًا بعد.</div>';ps.forEach(p=>{let d=document.createElement('div');d.className='bought '+(p.used?'used':'');d.innerHTML='<div>'+((p.image)?'<img class="zoomable" src="'+esc(p.image)+'" onclick="openPurchaseImage(this.src,\''+esc(p.groupName? p.groupName+' — '+p.name:p.name)+'\')" style="width:58px;height:58px;object-fit:cover;border-radius:12px;float:right;margin-left:9px" title="اضغط لتكبير الصورة">':'')+'<b>'+esc(p.groupName? p.groupName+' — '+p.name:p.name)+'</b><div class="note">'+catInfo(p.cat).icon+' '+catInfo(p.cat).name+'</div></div><span class="tag">'+p.price+' 💎</span>';myPurchases.appendChild(d)})}
-function renderWifePurchases(){if(!rd)return;let entries=Object.entries(rd.purchases||{});wifePurchases.innerHTML='';if(!entries.length)wifePurchases.innerHTML='<div class="muted">لا توجد مشتريات حتى الآن.</div>';entries.forEach(([id,p])=>{let d=document.createElement('div');d.className='bought '+(p.used?'used':'');let privateText='';if(p.kind==='custom'){let n=Number(String(p.itemId).split('_')[1]);let x=customs[n];privateText=x?'<div class="note">خاص عندك: '+esc(x.name||x.desc||'')+'</div>':''}d.innerHTML='<div>'+((p.image)?'<img src="'+esc(p.image)+'" style="width:58px;height:58px;object-fit:cover;border-radius:12px;float:right;margin-left:9px">':'')+'<b>'+esc(p.groupName? p.groupName+' — '+p.name:p.name)+'</b><div class="note">'+catInfo(p.cat).icon+' '+catInfo(p.cat).name+' • '+p.price+' 💎</div>'+privateText+'</div><button class="btn '+(p.used?'ghost':'primary')+' small" onclick="toggleUsed(\''+id+'\','+(!p.used)+')">'+(p.used?'إرجاع':'تم استخدامه')+'</button>';wifePurchases.appendChild(d)});let spent=entries.reduce((a,[,p])=>a+Number(p.price||0),0),used=entries.filter(([,p])=>p.used).length;sCount.textContent=entries.length;sSpent.textContent=spent;sUsed.textContent=used}
-window.toggleUsed=async(id,v)=>update(ref(db,'rooms/'+room+'/purchases/'+id),{used:v});
-window.shareRoom=async()=>{if(!room)return;let url=location.origin+location.pathname,text='متجر بيننا\nكود المتجر: '+room+'\n'+url;try{if(navigator.share)await navigator.share({title:'متجر بيننا',text,url});else{await navigator.clipboard.writeText(text);toast('تم نسخ الكود والرابط')}}catch{}}
-window.cancelAndNewEvent=async()=>{
- if(!room||!rd||role!=='wife')return;
- if(!confirm('إلغاء السهرة الحالية؟ سيتم حذف مشترياتها الحالية، وسيبقى الربط الدائم بينكما كما هو.'))return;
- try{
-  await update(ref(db,'rooms/'+room),{status:'idle',eventAt:'',budget:0,balance:0,items:null,purchases:null,publishedAt:Date.now()});
-  cart=[];editingExisting=false;
-  wifeStart();
-  eventAt.value='';budget.value=100;
-  toast('تم إلغاء السهرة. جهزي السهرة الجديدة ✓');
- }catch(e){console.error(e);toast('تعذر بدء سهرة جديدة')}
+window.refreshStore=async()=>{if(!room)return;try{let s=await get(ref(db,'rooms/'+room));if(!s.exists())return toast('المتجر غير موجود');rd=s.val();cart=cart.filter(id=>rd.items&&rd.items[id]);renderShop();toast('تم تحديث المتجر ✓')}catch(e){toast('تعذر تحديث المتجر')}};
+function renderShop(){
+ if(!rd)return;let closed=saleClosed(),base=baseBalance(),long=longingBalance(),total=base+long;
+ $('balanceText').textContent=total+' 💎';$('balanceBreakdown').textContent='أساسي '+base+' + شوق '+long;$('shopDate').textContent=fmtDate(rd.eventAt);$('refreshStamp').textContent='آخر تحديث: '+(rd.publishedAt?fmtDate(rd.publishedAt):'—');
+ $('nightNotice').style.display=closed?'block':'none';$('shopCard').style.display=closed?'none':'block';$('cartBar').style.display=closed?'none':'flex';
+ if(!closed){
+  renderShopTabs();let bought=purchasedIds(),bGroups=purchasedGroups(),vis=visibleItems(),groups={};$('shopCatalog').innerHTML='';
+  vis.filter(x=>x.kind==='choice').forEach(x=>(groups[x.groupId]??=[]).push(x));
+  Object.values(groups).forEach(opts=>{let g=opts[0],disabled=bGroups.has(g.groupId),d=document.createElement('div');d.className='item '+(disabled?'disabled':'');let inner='<div class="group-title"><div class="ico">'+catInfo(g.cat).icon+'</div><h3>'+esc(g.groupName)+'</h3><div class="meta">'+(disabled?'تم اختيار أحد الخيارات':'اختر خيارًا واحدًا')+'</div></div><div class="option-grid">';
+   opts.forEach(it=>{inner+='<div class="option-card">'+(it.image?'<img src="'+esc(it.image)+'" onclick="openImageById(\''+it.id+'\')">':'')+'<b>'+esc(it.name)+'</b><div class="price">'+it.price+' 💎</div><button class="btn '+(cart.includes(it.id)?'ghost':'primary')+' full small" style="margin-top:7px" '+(disabled?'disabled':'')+' onclick="toggleCart(\''+it.id+'\')">'+(cart.includes(it.id)?'إزالة':'اختيار')+'</button></div>'});inner+='</div>';d.innerHTML=inner;$('shopCatalog').appendChild(d)});
+  vis.filter(x=>x.kind!=='choice').forEach(it=>{let d=document.createElement('div');d.className='item '+(bought.has(it.id)?'disabled':'');d.innerHTML='<div class="ico">'+catInfo(it.cat).icon+'</div><h3>'+esc(it.name)+'</h3><div class="price">'+it.price+' 💎</div><button class="btn '+(cart.includes(it.id)?'ghost':'primary')+' full small" style="margin-top:9px" '+(bought.has(it.id)?'disabled':'')+' onclick="toggleCart(\''+it.id+'\')">'+(cart.includes(it.id)?'إزالة من السلة':'أضف للسلة')+'</button>';$('shopCatalog').appendChild(d)});
+  renderCart()
+ }
+ renderMyPurchases()
 }
-window.endEvent=async()=>{
- if(!room||!rd||role!=='wife')return show('home');
- if(!confirm('إنهاء السهرة الحالية مع إبقاء الاتصال الدائم بينكما؟'))return;
- try{await update(ref(db,'rooms/'+room),{status:'idle',eventAt:'',budget:0,balance:0,items:null,purchases:null})}catch(e){console.warn(e)}
- cart=[];renderPairHome();show('home');toast('انتهت السهرة والاتصال محفوظ ✓')
-}
-window.leaveRoom=window.endEvent;
+window.toggleCart=id=>{let it=rd?.items?.[id];if(!it||purchasedIds().has(id)||(it.groupId&&purchasedGroups().has(it.groupId)))return;if(cart.includes(id))cart=cart.filter(x=>x!==id);else{if(it.groupId)cart=cart.filter(x=>rd.items[x]?.groupId!==it.groupId);cart=[...cart,id]}renderShop()};
+function renderCart(){let items=cart.map(id=>rd.items[id]).filter(Boolean),total=items.reduce((a,x)=>a+Number(x.price||0),0);$('cartCount').textContent=items.length+' عناصر';$('cartTotal').textContent='المجموع '+total+' 💎'}
+window.checkout=async()=>{if(saleClosed())return toast('انتهى وقت البيع');if(!cart.length)return toast('السلة فارغة');try{
+ let snap=await get(ref(db,'rooms/'+room)),x=snap.val(),items=cart.map(id=>x.items?.[id]).filter(Boolean),already=new Set(Object.values(x.purchases||{}).map(p=>p.itemId)),bg=new Set(Object.values(x.purchases||{}).map(p=>p.groupId).filter(Boolean));
+ items=items.filter(i=>!already.has(i.id)&&(!i.groupId||!bg.has(i.groupId)));let cost=items.reduce((a,i)=>a+Number(i.price||0),0),base=Number(x.baseBalance??x.balance??x.budget??0),long=Number(x.longingBalance||0);
+ if(cost>base+long)return toast('الرصيد لا يكفي');
+ let useBase=Math.min(base,cost),newBase=base-useBase,newLong=long-(cost-useBase),patch={};
+ items.forEach(it=>{let k=push(ref(db,'rooms/'+room+'/purchases')).key;patch['rooms/'+room+'/purchases/'+k]={itemId:it.id,name:it.name,groupId:it.groupId||'',groupName:it.groupName||'',price:it.price,cat:it.cat,kind:it.kind,image:it.image||'',boughtAt:Date.now(),used:false}});
+ patch['rooms/'+room+'/baseBalance']=newBase;patch['rooms/'+room+'/longingBalance']=newLong;patch['rooms/'+room+'/balance']=newBase+newLong;await update(ref(db),patch);cart=[];
+ $('modal').innerHTML='<div class="big">🛍️</div><h2>تم الشراء</h2><p>تم خصم '+cost+' 💎.<br>المتبقي '+(newBase+newLong)+' 💎.</p><button class="btn primary full" onclick="finishPurchase()">تم</button>';$('overlay').classList.add('on');
+}catch(e){console.error(e);toast('تعذر إتمام الشراء')}};
+window.finishPurchase=()=>{$('overlay').classList.remove('on');renderHome();show('home')};
 
-window.addEventListener('load',()=>{renderPairHome();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{})});
+function renderMyPurchases(){
+ $('myPurchases').innerHTML='';let ps=Object.values(rd?.purchases||{});if(!ps.length){$('myPurchases').innerHTML='<div class="muted">لم تشترِ شيئًا بعد.</div>';return}
+ ps.forEach(p=>{let d=document.createElement('div');d.className='bought '+(p.used?'used':'');d.innerHTML='<div>'+((p.image)?'<img src="'+esc(p.image)+'" onclick="openPurchaseImage(this.src,\''+esc(p.groupName?p.groupName+' — '+p.name:p.name)+'\')" style="width:58px;height:58px;object-fit:cover;border-radius:12px;float:right;margin-left:9px;cursor:zoom-in">':'')+'<b>'+esc(p.groupName?p.groupName+' — '+p.name:p.name)+'</b><div class="note">'+catInfo(p.cat).icon+' '+catInfo(p.cat).name+'</div></div><span class="tag">'+p.price+' 💎</span>';$('myPurchases').appendChild(d)})
+}
+function renderWifePurchases(){
+ if(!$('wifePurchases')||!rd)return;let a=Object.entries(rd.purchases||{});$('wifePurchases').innerHTML='';if(!a.length)$('wifePurchases').innerHTML='<div class="muted">لا توجد مشتريات حتى الآن.</div>';
+ a.forEach(([id,p])=>{let d=document.createElement('div');d.className='bought '+(p.used?'used':'');d.innerHTML='<div><b>'+esc(p.groupName?p.groupName+' — '+p.name:p.name)+'</b><div class="note">'+catInfo(p.cat).icon+' '+catInfo(p.cat).name+' • '+p.price+' 💎</div></div><button class="btn '+(p.used?'ghost':'primary')+' small" onclick="toggleUsed(\''+id+'\','+(!p.used)+')">'+(p.used?'إرجاع':'تم استخدامه')+'</button>';$('wifePurchases').appendChild(d)});
+ let spent=a.reduce((z,[,p])=>z+Number(p.price||0),0),used=a.filter(([,p])=>p.used).length;$('sCount').textContent=a.length;$('sSpent').textContent=spent;$('sUsed').textContent=used
+}
+window.toggleUsed=(id,v)=>update(ref(db,'rooms/'+room+'/purchases/'+id),{used:v});
+window.openImageById=id=>{let it=rd?.items?.[id];if(!it?.image)return;$('imageLightboxImg').src=it.image;$('imageLightboxTitle').textContent=it.groupName?it.groupName+' — '+it.name:it.name;$('imageLightbox').classList.add('on')};
+window.openPurchaseImage=(src,title='')=>{if(!src)return;$('imageLightboxImg').src=src;$('imageLightboxTitle').textContent=title;$('imageLightbox').classList.add('on')};
+window.closeImage=()=>{$('imageLightbox').classList.remove('on');$('imageLightboxImg').src=''};
+
+window.shareRoom=async()=>{if(!room)return;let url=location.origin+location.pathname,text='متجر بيننا\nكود المتجر: '+room+'\n'+url;try{if(navigator.share)await navigator.share({title:'متجر بيننا',text,url});else{await navigator.clipboard.writeText(text);toast('تم نسخ الكود والرابط')}}catch{}};
+window.cancelAndNewEvent=async()=>{if(role!=='wife'||!room)return;if(!confirm('إلغاء السهرة الحالية وبدء سهرة جديدة؟ ستُحذف مشتريات السهرة الحالية، لكن رصيد الشوق والربط سيبقيان.'))return;try{await update(ref(db,'rooms/'+room),{status:'idle',eventAt:'',baseBudget:0,baseBalance:0,budget:0,balance:longingBalance(),items:null,purchases:null,publishedAt:Date.now()});cart=[];editingExisting=false;wifeStart();toast('تم إلغاء السهرة. جهزي السهرة الجديدة ✓')}catch(e){toast('تعذر بدء سهرة جديدة')}};
+window.endEvent=async()=>{if(role!=='wife'||!room)return;if(!confirm('إنهاء السهرة الحالية مع إبقاء الربط ورصيد الشوق؟'))return;await update(ref(db,'rooms/'+room),{status:'idle',eventAt:'',baseBudget:0,baseBalance:0,budget:0,balance:longingBalance(),items:null,purchases:null});cart=[];renderHome();show('home');toast('انتهت السهرة ✓')};
+
+window.addEventListener('load',()=>{renderHome();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{})});
 </script>
-</body></html>
+</body>
+</html>
