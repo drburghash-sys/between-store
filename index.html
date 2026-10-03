@@ -69,7 +69,7 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
  </section>
 
  <section id="husbandJoin" class="screen">
-  <div class="card"><div class="title">دخول المتجر</div><input id="joinCode" class="input" maxlength="8" placeholder="كود المتجر"><button id="joinStoreBtn" class="btn primary full" style="margin-top:10px" onclick="joinStore()">دخول</button><div id="joinStatus" class="muted" role="status" aria-live="polite" style="margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere"></div><div class="note">إصدار الاتصال 10</div></div>
+  <div class="card"><div class="title">دخول المتجر</div><input id="joinCode" class="input" maxlength="8" placeholder="كود المتجر"><button id="joinStoreBtn" class="btn primary full" style="margin-top:10px" onclick="joinStore()">دخول</button><div id="joinStatus" class="muted" role="status" aria-live="polite" style="margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere"></div><div class="note">إصدار الاتصال 11</div></div>
   <button class="btn ghost full" onclick="show('home')">رجوع</button>
  </section>
 
@@ -361,7 +361,7 @@ let joiningStore=false;
 function connectionError(e,stage){
  const code=String(e?.code||'').toLowerCase(),message=String(e?.message||'');
  let detail='تعذر إكمال الاتصال. أعد المحاولة.';
- if(/permission|denied/.test(code+' '+message))detail='رفضت قاعدة البيانات صلاحية هذه الخطوة. يلزم مراجعة قواعد Firebase لمسار rooms؛ تكرار إدخال الكود لن يعالجها.';
+ if(/permission|denied/.test(code+' '+message))detail=stage==='تثبيت ربط الزوج'?'تعذر تثبيت هذا الجهاز. قد يكون المتجر مرتبطًا بجهاز زوج آخر، أو قواعد Firebase تمنع الانضمام.':'رفضت قاعدة البيانات صلاحية هذه الخطوة.';
  else if(/network|unavailable|disconnected/.test(code+' '+message))detail='تعذر الوصول للخادم. تحقق من اتصال الإنترنت ثم أعد المحاولة.';
  else if(/operation-not-allowed/.test(code))detail='تسجيل الدخول المجهول غير مفعّل في إعدادات Firebase Authentication.';
  else if(/api-key|app-not-authorized|unauthorized-domain/.test(code))detail='إعدادات المصادقة في Firebase ترفض هذا التطبيق.';
@@ -377,16 +377,20 @@ window.joinStore=async()=>{
  const waiting=setTimeout(()=>{status.textContent='الاتصال يستغرق وقتًا أطول من المعتاد أثناء: '+stage+'؛ ننتظر رد الخادم.'},15000);
  try{
   status.textContent='جارٍ تسجيل الدخول…';await ensure();
-  stage='قراءة المتجر';status.textContent='جارٍ التحقق من كود المتجر…';
-  let snapshot=await get(ref(db,'rooms/'+r));
-  if(!snapshot.exists()||snapshot.val().game!=='between-store'){status.textContent='لا يوجد متجر بهذا الكود. تأكد من الكود الظاهر لدى الزوجة.';return}
-  let x=snapshot.val();
-  if(x.hostUid===uid){status.textContent='هذا المتصفح مسجل كجهاز الزوجة. افتح رابط المتجر على جهاز الزوج لإتمام الربط.';return}
-  if(x.guestUid&&x.guestUid!==uid){status.textContent='المتجر مرتبط بحساب جهاز آخر. استخدم المتصفح الذي دخل منه الزوج سابقًا.';return}
+  // قواعد rooms تسمح للجهاز الثاني بالقراءة بعد تثبيت guestUid فقط،
+  // لذلك يجب تنفيذ الانضمام أولًا ثم قراءة المتجر.
   stage='تثبيت ربط الزوج';status.textContent='جارٍ تثبيت الربط…';
   await update(ref(db,'rooms/'+r),{guestUid:uid});
-  stage='تأكيد الربط';snapshot=await get(ref(db,'rooms/'+r));
-  if(!snapshot.exists()||snapshot.val().guestUid!==uid)throw new Error('لم يؤكد الخادم ربط هذا الجهاز');
+  stage='قراءة المتجر';status.textContent='جارٍ التحقق من المتجر…';
+  let snapshot=await get(ref(db,'rooms/'+r));
+  if(!snapshot.exists()||snapshot.val().game!=='between-store'){
+   status.textContent='لا يوجد متجر صالح بهذا الكود. تأكد من الكود الظاهر لدى الزوجة.';
+   return
+  }
+  let x=snapshot.val();
+  if(x.hostUid===uid){status.textContent='هذا المتصفح مسجل كجهاز الزوجة. افتح رابط المتجر على جهاز الزوج لإتمام الربط.';return}
+  if(x.guestUid!==uid){status.textContent='المتجر مرتبط بجهاز آخر أو تعذر تثبيت هذا الجهاز.';return}
+  stage='تأكيد الربط';
   room=r;role='husband';rd=snapshot.val();remember();listenRoom();renderHome();
   status.textContent='تم الربط بنجاح ✓';
   rd.status==='open'?(renderShop(),show('shop')):show('home');
