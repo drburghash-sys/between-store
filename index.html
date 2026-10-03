@@ -69,7 +69,7 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
  </section>
 
  <section id="husbandJoin" class="screen">
-  <div class="card"><div class="title">دخول المتجر</div><input id="joinCode" class="input" maxlength="8" placeholder="كود المتجر"><button class="btn primary full" style="margin-top:10px" onclick="joinStore()">دخول</button></div>
+  <div class="card"><div class="title">دخول المتجر</div><input id="joinCode" class="input" maxlength="8" placeholder="كود المتجر"><button id="joinStoreBtn" class="btn primary full" style="margin-top:10px" onclick="joinStore()">دخول</button><div id="joinStatus" class="muted" role="status" aria-live="polite" style="margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere"></div><div class="note">إصدار الاتصال 10</div></div>
   <button class="btn ghost full" onclick="show('home')">رجوع</button>
  </section>
 
@@ -173,10 +173,19 @@ function catInfo(id){return CATS.find(c=>c.id===id)||{icon:'💎',name:id}}
 function purchasedIds(){return new Set(Object.values(rd?.purchases||{}).map(p=>p.itemId))}
 function purchasedGroups(){return new Set(Object.values(rd?.purchases||{}).map(p=>p.groupId).filter(Boolean))}
 
-onValue(ref(db,'.info/connected'),s=>$('net').textContent=s.val()===true?'متصل ✓':'غير متصل');
+onValue(ref(db,'.info/connected'),s=>$('net').textContent=s.val()===true?'الخادم متصل ✓':'الخادم غير متصل');
 onAuthStateChanged(auth,u=>{if(u){uid=u.uid;resume()}});
-signInAnonymously(auth).catch(()=>$('net').textContent='خطأ اتصال');
-async function ensure(){if(uid)return uid;let x=await signInAnonymously(auth);uid=x.user.uid;return uid}
+let authAttempt=null;
+async function ensure(){
+ if(uid)return uid;
+ if(!authAttempt)authAttempt=(async()=>{
+  await auth.authStateReady();
+  if(auth.currentUser){uid=auth.currentUser.uid;return uid}
+  let x=await signInAnonymously(auth);uid=x.user.uid;return uid;
+ })().finally(()=>{authAttempt=null});
+ return authAttempt;
+}
+ensure().catch(e=>{$('net').textContent='تعذر تسجيل الدخول';console.error(e)});
 function remember(){if(room){localStorage.setItem('between_store_pair',JSON.stringify({room,role}));localStorage.setItem('between_store_active',JSON.stringify({room,role}));paired=true}}
 function forgetPair(){localStorage.removeItem('between_store_pair');localStorage.removeItem('between_store_active');paired=false}
 function readPair(){try{return JSON.parse(localStorage.getItem('between_store_pair')||localStorage.getItem('between_store_active')||'null')}catch{return null}}
@@ -197,7 +206,7 @@ function listenRoom(){
  unsub=onValue(ref(db,'rooms/'+room),s=>{
   if(!s.exists()){forgetPair();room=null;rd=null;role=null;renderHome();show('home');toast('تم إنهاء الاتصال');return}
   rd=s.val();paired=true;remember();renderHome();renderRoleViews();
- })
+ },e=>{$('net').textContent='تعذرت مزامنة المتجر';console.error(e);toast('تعذرت مزامنة المتجر: '+(e.code||e.message))})
 }
 function renderRoleViews(){
  if(role==='wife'){
@@ -219,7 +228,7 @@ function renderHome(){
  if(!paired)return;
  $('homeLonging').textContent=longingBalance()+' 💎';
  let open=rd?.status==='open';
- $('pairTitle').textContent=role==='wife'?'متصلة بالزوج ✓':'متصل بالزوجة ✓';
+ $('pairTitle').textContent=role==='wife'?(rd?.guestUid?'تم ربط الزوج ✓':'بانتظار دخول الزوج'):'تم الربط بالزوجة ✓';
  if(role==='wife'){
   $('pairText').textContent=open?'المتجر الحالي مفتوح. ويمكنك أيضًا إرسال مهام رصيد الشوق طوال الأسبوع.':'الربط محفوظ. أرسلي مهام الأسبوع أو جهزي سهرة جديدة.';
   $('pairMainBtn').textContent=open?'فتح لوحة السهرة':'تجهيز سهرة جديدة';$('pairMainBtn').disabled=false;
@@ -348,12 +357,42 @@ window.createStore=async()=>{try{
  remember();listenRoom();show('wifeLobby');toast('تم إنشاء المتجر ✓');
 }catch(e){console.error(e);toast('تعذر نشر المتجر')}};
 
-window.joinStore=async()=>{try{
- await ensure();let r=$('joinCode').value.trim().toUpperCase();if(r.length!==8||r[0]!=='M')return toast('أدخل كود المتجر الصحيح');
- let s=await get(ref(db,'rooms/'+r));if(!s.exists()||s.val().game!=='between-store')return toast('المتجر غير موجود');
- let x=s.val();if(x.guestUid&&x.guestUid!==uid)return toast('هذا المتجر مرتبط بجهاز آخر');
- await update(ref(db,'rooms/'+r),{guestUid:uid});s=await get(ref(db,'rooms/'+r));room=r;role='husband';rd=s.val();remember();listenRoom();renderHome();rd.status==='open'?(renderShop(),show('shop')):show('home');
-}catch(e){console.error(e);toast('تعذر الدخول')}};
+let joiningStore=false;
+function connectionError(e,stage){
+ const code=String(e?.code||'').toLowerCase(),message=String(e?.message||'');
+ let detail='تعذر إكمال الاتصال. أعد المحاولة.';
+ if(/permission|denied/.test(code+' '+message))detail='رفضت قاعدة البيانات صلاحية هذه الخطوة. يلزم مراجعة قواعد Firebase لمسار rooms؛ تكرار إدخال الكود لن يعالجها.';
+ else if(/network|unavailable|disconnected/.test(code+' '+message))detail='تعذر الوصول للخادم. تحقق من اتصال الإنترنت ثم أعد المحاولة.';
+ else if(/operation-not-allowed/.test(code))detail='تسجيل الدخول المجهول غير مفعّل في إعدادات Firebase Authentication.';
+ else if(/api-key|app-not-authorized|unauthorized-domain/.test(code))detail='إعدادات المصادقة في Firebase ترفض هذا التطبيق.';
+ return 'تعذر الدخول أثناء: '+stage+'\n'+detail+'\nرمز الخطأ: '+(e?.code||e?.message||'unknown');
+}
+window.joinStore=async()=>{
+ if(joiningStore)return;
+ const button=$('joinStoreBtn'),status=$('joinStatus');
+ let r=$('joinCode').value.replace(/[\s\u200e\u200f\u202a-\u202e\u2066-\u2069]/g,'').toUpperCase();
+ if(!/^M[A-Z2-9]{7}$/.test(r)){status.textContent='أدخل كود المتجر المكوّن من 8 أحرف وأرقام.';return}
+ $('joinCode').value=r;joiningStore=true;button.disabled=true;button.textContent='جارٍ الدخول…';
+ let stage='تسجيل الدخول';
+ const waiting=setTimeout(()=>{status.textContent='الاتصال يستغرق وقتًا أطول من المعتاد أثناء: '+stage+'؛ ننتظر رد الخادم.'},15000);
+ try{
+  status.textContent='جارٍ تسجيل الدخول…';await ensure();
+  stage='قراءة المتجر';status.textContent='جارٍ التحقق من كود المتجر…';
+  let snapshot=await get(ref(db,'rooms/'+r));
+  if(!snapshot.exists()||snapshot.val().game!=='between-store'){status.textContent='لا يوجد متجر بهذا الكود. تأكد من الكود الظاهر لدى الزوجة.';return}
+  let x=snapshot.val();
+  if(x.hostUid===uid){status.textContent='هذا المتصفح مسجل كجهاز الزوجة. افتح رابط المتجر على جهاز الزوج لإتمام الربط.';return}
+  if(x.guestUid&&x.guestUid!==uid){status.textContent='المتجر مرتبط بحساب جهاز آخر. استخدم المتصفح الذي دخل منه الزوج سابقًا.';return}
+  stage='تثبيت ربط الزوج';status.textContent='جارٍ تثبيت الربط…';
+  await update(ref(db,'rooms/'+r),{guestUid:uid});
+  stage='تأكيد الربط';snapshot=await get(ref(db,'rooms/'+r));
+  if(!snapshot.exists()||snapshot.val().guestUid!==uid)throw new Error('لم يؤكد الخادم ربط هذا الجهاز');
+  room=r;role='husband';rd=snapshot.val();remember();listenRoom();renderHome();
+  status.textContent='تم الربط بنجاح ✓';
+  rd.status==='open'?(renderShop(),show('shop')):show('home');
+ }catch(e){console.error(e);status.textContent=connectionError(e,stage)}
+ finally{clearTimeout(waiting);joiningStore=false;button.disabled=false;button.textContent='دخول'}
+};
 
 function renderTaskPresets(){
  $('taskPresets').innerHTML='';TASK_PRESETS.forEach(([name,reward],i)=>{let d=document.createElement('div');d.className='task-preset';d.innerHTML='<b>'+esc(name)+'</b><button class="btn primary small" onclick="sendPresetTask('+i+')">إرسال • '+reward+' 💎</button>';$('taskPresets').appendChild(d)})
