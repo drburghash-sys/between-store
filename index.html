@@ -47,6 +47,15 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
    <button class="btn primary" onclick="wifeStart()">👩 الزوجة — تجهيز المتجر</button>
    <button class="btn ghost" onclick="husbandStart()">👨 الزوج — دخول المتجر</button>
   </div>
+  <div id="longingStartCard" class="card">
+   <div class="kicker">برنامج مستقل طوال الأسبوع</div>
+   <div class="title">💞 رصيد الشوق</div>
+   <div class="muted">يمكن بدء رصيد الشوق قبل تجهيز أي سهرة. تربط الزوجة الجهازين مرة واحدة، ثم ترسل مهامًا صغيرة ويجمع الزوج الرصيد. عند تجهيز المتجر لاحقًا يضاف رصيد الشوق تلقائيًا إلى الرصيد الأساسي.</div>
+   <div class="grid2" style="margin-top:10px">
+    <button class="btn primary" onclick="wifeStartLongingOnly()">👩 الزوجة — إنشاء ربط رصيد الشوق</button>
+    <button class="btn ghost" onclick="husbandStartLongingOnly()">👨 الزوج — إدخال كود الربط</button>
+   </div>
+  </div>
  </section>
 
  <section id="wifeSetup" class="screen">
@@ -69,7 +78,7 @@ button,input,select,textarea{font:inherit}.app{max-width:820px;margin:auto;paddi
  </section>
 
  <section id="husbandJoin" class="screen">
-  <div class="card"><div class="title">دخول المتجر</div><input id="joinCode" class="input" maxlength="8" placeholder="كود المتجر"><button id="joinStoreBtn" class="btn primary full" style="margin-top:10px" onclick="joinStore()">دخول</button><div id="joinStatus" class="muted" role="status" aria-live="polite" style="margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere"></div><div class="note">إصدار الاتصال 11</div></div>
+  <div class="card"><div class="title">دخول الربط / المتجر</div><input id="joinCode" class="input" maxlength="8" placeholder="كود الربط"><button id="joinStoreBtn" class="btn primary full" style="margin-top:10px" onclick="joinStore()">دخول</button><div id="joinStatus" class="muted" role="status" aria-live="polite" style="margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere"></div><div class="note">إصدار الاتصال 11</div></div>
   <button class="btn ghost full" onclick="show('home')">رجوع</button>
  </section>
 
@@ -225,6 +234,7 @@ function renderRoleViews(){
 function renderHome(){
  let a=readPair();paired=!!(a&&room&&rd);
  $('pairCard').style.display=paired?'block':'none';$('firstPairActions').style.display=paired?'none':'grid';
+ if($('longingStartCard'))$('longingStartCard').style.display=paired?'none':'block';
  if(!paired)return;
  $('homeLonging').textContent=longingBalance()+' 💎';
  let open=rd?.status==='open';
@@ -239,6 +249,21 @@ function renderHome(){
 }
 window.pairMainAction=()=>{if(role==='wife'){if(rd?.status==='open'){renderWifePurchases();show('wifeDash')}else wifeStart()}else if(rd?.status==='open'){renderShop();show('shop')}};
 window.openLonging=()=>{if(!paired)return;role==='wife'?(renderWifeTasks(),renderTaskPresets(),show('longingWife')):(renderHusbandTasks(),show('longingHusband'))};
+
+window.wifeStartLongingOnly=async()=>{
+ try{
+  await ensure();
+  role='wife';room=code8();
+  await set(ref(db,'rooms/'+room),{
+   game:'between-store',hostUid:uid,hostRole:'wife',guestUid:null,status:'idle',
+   eventAt:'',baseBudget:0,baseBalance:0,budget:0,balance:0,longingBalance:0,
+   items:{},purchases:{},longingTasks:{},publishedAt:Date.now()
+  });
+  remember();listenRoom();renderHome();show('wifeLobby');
+  toast('تم إنشاء ربط رصيد الشوق ✓');
+ }catch(e){console.error(e);toast('تعذر إنشاء ربط رصيد الشوق')}
+};
+window.husbandStartLongingOnly=()=>{role='husband';$('joinStatus').textContent='';$('joinCode').value='';show('husbandJoin')};
 
 window.disconnectPair=async()=>{
  if(!paired||!room)return;if(!confirm('فصل الربط الدائم بين الجهازين؟'))return;
